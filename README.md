@@ -5,7 +5,7 @@ Here youll find a lot of the best code youve ever seen.
 A few of the very best programmers have written code to develop this glorious peace of art.
 ## Team
 ![This is an image](https://media.tenor.com/UHvv3z9mZloAAAAd/millennium-bsb.gif)
-**Hubi**
-**Louis**
-**Despoina**
-**Flo**
+###Hubi
+###Louis
+###Despoina
+###Flo
