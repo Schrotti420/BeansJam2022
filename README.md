@@ -6,7 +6,7 @@ A few of the very best programmers have written code to develop this glorious pe
 ## Team
 ![Team portrait](https://media.tenor.com/UHvv3z9mZloAAAAd/millennium-bsb.gif)
 
-###Hubi
-###Louis
-###Despoina
-###Flo
+######Hubi
+######Louis
+######Despoina
+######Flo
