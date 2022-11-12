@@ -6,10 +6,11 @@ public class ButtonClickEvents: MonoBehaviour
 {
     public GameObject startMenu;
     public GameObject settingsMenu;
-    //quit application
-    public void doExitGame()
+
+    //start game
+    public void startGame()
     {
-        Application.Quit();
+
     }
 
     //go to settings page
@@ -17,6 +18,12 @@ public class ButtonClickEvents: MonoBehaviour
     {
         startMenu.SetActive(false);
         settingsMenu.SetActive(true);
+    }
+
+    //quit application
+    public void doExitGame()
+    {
+        Application.Quit();
     }
 
     //go from settings page back to main menu page
