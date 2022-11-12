@@ -14,6 +14,7 @@ public class SoundStageManager : MonoBehaviour
     [SerializeField]
     private List<AudioClip> tracks;
     private int currentTrack, previousTrack;
+    [SerializeField]
     private bool isPrimaryActive = true;
 
     private void Start()
@@ -30,7 +31,7 @@ public class SoundStageManager : MonoBehaviour
         do
         {
             next = Random.Range(0, tracks.Count);
-        } while (next != currentTrack);
+        } while (next == currentTrack);
         return next;
     }
     private AudioSource GetActiveSource()
@@ -73,7 +74,7 @@ public class SoundStageManager : MonoBehaviour
                         primary.DOFade(1f, fadeThresholdInS);
                         isPrimaryActive = true;
                     }
-                    yield return null;
+                    yield return new WaitForSecondsRealtime(fadeThresholdInS +1f);
                     active = GetActiveSource();
                     break;
                 }
