@@ -23,8 +23,8 @@ public class SimpleSpotLightAnimator : MonoBehaviour
     {
         PingPong();
 
-        Debug.Log($"Y Direction: {yAxisPositive}");
-        Debug.Log($"Z Direction: {zAxisPositive}");
+        //Debug.Log($"Y Direction: {yAxisPositive}");
+        //Debug.Log($"Z Direction: {zAxisPositive}");
     }
     private float AddRotation(bool isPositiveDirection, float rotation)
     {

@@ -49,14 +49,14 @@ public class SoundStageManager : MonoBehaviour
             yield return null;
             while (active.isPlaying)
             {
-                Debug.Log("Active Source is playing");
+                //Debug.Log("Active Source is playing");
                 //Debug.Log($"Active delta is {active.clip.length - active.time}");
                 if (active.time > active.clip.length - fadeThresholdInS)
                 {
                     //fade
                     previousTrack = currentTrack;
                     currentTrack = GetNextTrack(previousTrack);
-                    Debug.Log($"Fading tracks, new track is: {currentTrack}");
+                    //Debug.Log($"Fading tracks, new track is: {currentTrack}");
 
                     if (isPrimaryActive)
                     {
