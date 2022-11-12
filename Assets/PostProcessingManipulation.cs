@@ -114,7 +114,7 @@ public class PostProcessingManipulation : MonoBehaviour
 
             AdjustBloom(m_overdose);
 
-            AdjustChromaticAberration();
+            AdjustChromaticAberration(m_overdose);
 
             m_frameCounter = skippedFrames;
         }
