@@ -10,6 +10,7 @@ TagManager:
   - Drug
   - Water
   - Beer
+  - StageZone
   layers:
   - Default
   - TransparentFX

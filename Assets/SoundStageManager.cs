@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.WSA;
 using DG.Tweening;
+using System.Numerics;
 
 public class SoundStageManager : MonoBehaviour
 {
@@ -24,6 +25,18 @@ public class SoundStageManager : MonoBehaviour
         primary.Play();
 
         StartCoroutine(FadeManagerDaemon());
+    }
+    public void DeactivateSound()
+    {
+        Debug.Log($"Deactivating sound in {gameObject.name}");
+        DOTween.To(() => primary.maxDistance, x => primary.maxDistance = x, 0f, 1f);
+        DOTween.To(() => secondary.maxDistance, x => secondary.maxDistance = x, 0f, 1f);
+    }
+    public void ActivateSound()
+    {
+        Debug.Log($"Activating sound in {gameObject.name}");
+        DOTween.To(() => primary.maxDistance, x => primary.maxDistance = x, 50f, 1f);
+        DOTween.To(() => secondary.maxDistance, x => secondary.maxDistance = x, 50f, 1f);
     }
     private int GetNextTrack(int currentTrack)
     {
