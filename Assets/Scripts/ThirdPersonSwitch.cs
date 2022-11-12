@@ -14,6 +14,7 @@ public class ThirdPersonSwitch : MonoBehaviour
 
     [SerializeField]
     private GameObject fpCharacter;
+    private Animator fpAnimator;
     private StarterAssets.StarterAssetsInputs inputScript;
     private bool firstPerson = true;
     private bool raving = false;
@@ -22,35 +23,72 @@ public class ThirdPersonSwitch : MonoBehaviour
     void Start()
     {
         inputScript = this.GetComponent<StarterAssets.StarterAssetsInputs>();
+        fpAnimator = fpCharacter.GetComponentInChildren<Animator>();
         fpCharacter.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            Overdose();
+        }
     }
 
-    #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
-		public void OnRave()
-		{
-            raving = !raving;
-            firstPerson = raving ? false : true;
+#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
+    public void OnRave()
+    {
+        raving = !raving;
+        firstPerson = raving ? false : true;
 
-            if(!firstPerson)
+        if (!firstPerson)
+        {
+            inputScript.moveAllowed = false;
+            fpCharacter.transform.SetPositionAndRotation(transform.position, transform.rotation);
+            fpCharacter.SetActive(true);
+        }
+
+        float targetValue = firstPerson ? 0.0f : 5.0f;
+        DOTween.To(() => virtualCam.GetCinemachineComponent<Cinemachine.Cinemachine3rdPersonFollow>().CameraDistance,
+            x => virtualCam.GetCinemachineComponent<Cinemachine.Cinemachine3rdPersonFollow>().CameraDistance = x,
+            targetValue, 1.0f).OnComplete(() =>
             {
-                inputScript.moveAllowed = false;
-                fpCharacter.transform.SetPositionAndRotation(transform.position, transform.rotation);
-                fpCharacter.SetActive(true);
-            }
+                inputScript.moveAllowed = firstPerson;
+                fpCharacter.SetActive(!firstPerson);
+            });
+    }
+#endif
 
-            float targetValue = firstPerson ? 0.0f : 5.0f;
-            DOTween.To(()=> virtualCam.GetCinemachineComponent<Cinemachine.Cinemachine3rdPersonFollow>().CameraDistance, 
-                x => virtualCam.GetCinemachineComponent<Cinemachine.Cinemachine3rdPersonFollow>().CameraDistance = x,
-                targetValue, 1.0f ).OnComplete( () => {
-                    inputScript.moveAllowed = firstPerson;
-                    fpCharacter.SetActive(!firstPerson);
-                }); 
-		}
-    #endif
+    public void FallAsleep()
+    {
+        firstPerson = false;
+        inputScript.moveAllowed = false;
+        fpCharacter.transform.SetPositionAndRotation(transform.position, transform.rotation);
+        fpCharacter.SetActive(true);
+        fpAnimator.SetBool("Sleeping", true);
+        
+        DOTween.To(() => virtualCam.GetCinemachineComponent<Cinemachine.Cinemachine3rdPersonFollow>().CameraDistance,
+            x => virtualCam.GetCinemachineComponent<Cinemachine.Cinemachine3rdPersonFollow>().CameraDistance = x,
+            5.0f, 1.0f).OnComplete(() =>
+            {
+
+            });
+    }
+
+    public void Overdose()
+    {
+        firstPerson = false;
+        inputScript.moveAllowed = false;
+        fpCharacter.transform.SetPositionAndRotation(transform.position, transform.rotation);
+        fpCharacter.SetActive(true);
+        fpAnimator.SetBool("Dying", true);
+        
+        DOTween.To(() => virtualCam.GetCinemachineComponent<Cinemachine.Cinemachine3rdPersonFollow>().CameraDistance,
+            x => virtualCam.GetCinemachineComponent<Cinemachine.Cinemachine3rdPersonFollow>().CameraDistance = x,
+            5.0f, 1.0f).OnComplete(() =>
+            {
+
+            });
+    }
 }
