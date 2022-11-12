@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a32edbfbeabca7419ce826c9966639d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  masterMixer: {fileID: 24100000, guid: c2b27347fba42cb4cae43526f6645f95, type: 2}
   stageManagers:
   - {fileID: 137897732}
   - {fileID: 2046720877}
@@ -380,6 +381,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b492927289f675544b84ba81fee33d3a, type: 3}
   - {fileID: 8300000, guid: 141ccdb45e636374eb15d0036076978f, type: 3}
   isPrimaryActive: 1
+  fadeInDuration: 0.1
+  fadeOutDuration: 2
 --- !u!1 &146880525
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,7 +766,8 @@ AudioSource:
   m_GameObject: {fileID: 397613279}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: c2b27347fba42cb4cae43526f6645f95,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1827,7 +1831,8 @@ AudioSource:
   m_GameObject: {fileID: 967299780}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: c2b27347fba42cb4cae43526f6645f95,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -2261,7 +2266,8 @@ AudioSource:
   m_GameObject: {fileID: 1140602090}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: c2b27347fba42cb4cae43526f6645f95,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -3016,7 +3022,8 @@ AudioSource:
   m_GameObject: {fileID: 1419094331}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: c2b27347fba42cb4cae43526f6645f95,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -5772,6 +5779,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e5fa2652a26036c458c379d20164cdd1, type: 3}
   - {fileID: 8300000, guid: a42ef98d12b5a7448b5c7602e62af079, type: 3}
   isPrimaryActive: 1
+  fadeInDuration: 0.1
+  fadeOutDuration: 2
 --- !u!64 &2054027517
 MeshCollider:
   m_ObjectHideFlags: 0

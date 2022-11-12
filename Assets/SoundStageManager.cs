@@ -17,6 +17,8 @@ public class SoundStageManager : MonoBehaviour
     private int currentTrack, previousTrack;
     [SerializeField]
     private bool isPrimaryActive = true;
+    [SerializeField]
+    private float fadeInDuration, fadeOutDuration;
 
     private void Start()
     {
@@ -29,14 +31,14 @@ public class SoundStageManager : MonoBehaviour
     public void DeactivateSound()
     {
         Debug.Log($"Deactivating sound in {gameObject.name}");
-        DOTween.To(() => primary.maxDistance, x => primary.maxDistance = x, 0f, 1f);
-        DOTween.To(() => secondary.maxDistance, x => secondary.maxDistance = x, 0f, 1f);
+        DOTween.To(() => primary.maxDistance, x => primary.maxDistance = x, 0f, fadeOutDuration);
+        DOTween.To(() => secondary.maxDistance, x => secondary.maxDistance = x, 0f, fadeOutDuration);
     }
     public void ActivateSound()
     {
         Debug.Log($"Activating sound in {gameObject.name}");
-        DOTween.To(() => primary.maxDistance, x => primary.maxDistance = x, 50f, 1f);
-        DOTween.To(() => secondary.maxDistance, x => secondary.maxDistance = x, 50f, 1f);
+        DOTween.To(() => primary.maxDistance, x => primary.maxDistance = x, 50f, fadeInDuration);
+        DOTween.To(() => secondary.maxDistance, x => secondary.maxDistance = x, 50f, fadeInDuration);
     }
     private int GetNextTrack(int currentTrack)
     {
