@@ -5,81 +5,50 @@ using StarterAssets;
 
 public class ControllsFatigueInfluence : MonoBehaviour
 {
-    public int fatigueValue = 5;
+    public int fatigueValue = 50;
     public FirstPersonController firstpersoncontroller;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
     void Update()
     {
         // get fatigue value
-        // get overdose value
-        // adjust movespeed
         
+        // get overdose value
+        
+        // adjust movespeed
         MovementSpeedAdjust();
+        givePerlinNoise();
     
     }
 
+    //movement speed gets adjusted when fatigue value changes
     public void MovementSpeedAdjust() 
     {
-        if (fatigueValue <= 100) 
-        {
-            firstpersoncontroller.MoveSpeed = 10.0f;
-            
-        }
-        if (fatigueValue <= 90) 
-        {
-            firstpersoncontroller.MoveSpeed = 9.0f;
-            
-        }
-        if (fatigueValue <= 80) 
-        {
-            firstpersoncontroller.MoveSpeed = 8.0f;
-            
-        }
-        if (fatigueValue <= 70) 
-        {
-            firstpersoncontroller.MoveSpeed = 7.0f;
-            
-        }
-        if (fatigueValue <= 60) 
-        {
-            firstpersoncontroller.MoveSpeed = 6.0f;
-            
-        }
-        if (fatigueValue <= 50) 
-        {
-            firstpersoncontroller.MoveSpeed = 5.0f;
-            
-        }
-        if (fatigueValue <= 40) 
-        {
-            firstpersoncontroller.MoveSpeed = 4.0f;
-            
-        }
-        if (fatigueValue <= 30) 
-        {
-            firstpersoncontroller.MoveSpeed = 3.0f;
-            
-        }
-        if (fatigueValue <= 20) 
-        {
-            firstpersoncontroller.MoveSpeed = 2.0f;
-            
-        }
-        if (fatigueValue <= 10) 
-        {
-            firstpersoncontroller.MoveSpeed = 1.0f;
-            
-        }
-        
-        
-        
-        
+        firstpersoncontroller.MoveSpeed = fatigueValue*0.1f;        
     }
+
+    public int xCoord = 100;
+    public int yCoord = 100;
+
+    public void givePerlinNoise() 
+    {
+         
+
+         for (int xCoord = 0; xCoord <= 100; xCoord++)
+         {
+            for (int yCoord = 0; yCoord <= 100; yCoord++)
+            {
+                float sample = Mathf.PerlinNoise(xCoord, yCoord);
+                print(sample);
+            }   
+         }
+    }
+    
+    
 }
