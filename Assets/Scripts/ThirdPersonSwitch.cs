@@ -18,7 +18,11 @@ public class ThirdPersonSwitch : MonoBehaviour
     private StarterAssets.StarterAssetsInputs inputScript;
     private bool firstPerson = true;
     private bool raving = false;
-
+    
+    // how much the player fatigues per second he is raving
+    [SerializeField]
+    private int ravingFatigueRate = 2;
+    private float ravingTime = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +37,16 @@ public class ThirdPersonSwitch : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.F))
         {
             Overdose();
+        }
+
+        if(raving)
+        {
+            ravingTime += Time.deltaTime;
+            if(ravingTime > 1.0f)
+            {
+                PlayerStats.Instance.IncreaseFatigue(ravingFatigueRate);
+                ravingTime -= 1.0f;
+            }
         }
     }
 
