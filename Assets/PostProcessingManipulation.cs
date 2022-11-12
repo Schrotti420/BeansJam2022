@@ -1,13 +1,18 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.XR.OpenVR;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
 public class PostProcessingManipulation : MonoBehaviour
 {
     [Header("Scaling parameters")]
-    float vignetteScaling;
+    public float vignetteScaling;
+    public float tintLerpDuration;
+    public float reverseDuration;
+    public float exposureScaling;
 
     [Header("Performance parameters")]
     [SerializeField]
@@ -15,6 +20,10 @@ public class PostProcessingManipulation : MonoBehaviour
     float m_frameCounter;
 
     float m_overdose, m_fatigue;
+    int m_tintValue;
+    int m_hueValue;
+    Sequence tintSequence;
+    Sequence hueSequence;
 
     PostProcessVolume m_Volume;
     Vignette vignette;
@@ -62,6 +71,7 @@ public class PostProcessingManipulation : MonoBehaviour
 
         colorGrading.gradingMode.Override(GradingMode.HighDefinitionRange);
         colorGrading.tonemapper.Override(Tonemapper.ACES);
+        colorGrading.tint.Override(0f);
 
         lensDistortion.intensity.Override(0f);
 
@@ -81,6 +91,10 @@ public class PostProcessingManipulation : MonoBehaviour
             //edit effects
             AdjustVignette(m_fatigue);
 
+            AdjustColorgrading(m_overdose);
+            colorGrading.tint.value = m_tintValue;
+            colorGrading.hueShift.value = m_hueValue;
+
             m_frameCounter = skippedFrames;
         }
     }
@@ -92,6 +106,36 @@ public class PostProcessingManipulation : MonoBehaviour
     void AdjustVignette(float fatigueval)
     {
         vignette.intensity.value = fatigueval * vignetteScaling;
+    }
+
+    void AdjustColorgrading(float overdoseVal)
+    {
+        if(overdoseVal > .75f)
+        {
+            if (!tintSequence.IsPlaying())
+            {
+                tintSequence = DOTween.Sequence();
+                tintSequence.Append(DOTween.To(() => m_tintValue, x => m_tintValue = x, 100, tintLerpDuration));
+                tintSequence.Append(DOTween.To(() => m_tintValue, x => m_tintValue = x, -100, tintLerpDuration));
+                tintSequence.SetLoops(-1, LoopType.Restart);
+            }
+            if (!hueSequence.IsPlaying())
+            {
+                hueSequence = DOTween.Sequence();
+                hueSequence.Append(DOTween.To(() => m_hueValue, x => m_hueValue = x, 180, tintLerpDuration));
+                hueSequence.Append(DOTween.To(() => m_hueValue, x => m_hueValue = x, -180, tintLerpDuration));
+                hueSequence.SetLoops(-1, LoopType.Restart);
+            }
+        }
+        else
+        {
+            if(tintSequence != null) tintSequence.Kill();
+            if(m_tintValue != 0) DOTween.To(() => m_tintValue, x => m_tintValue = x, 0, reverseDuration);
+
+            if(hueSequence != null) hueSequence.Kill();
+            if(m_hueValue != 0) DOTween.To(() => m_tintValue, x => m_tintValue = x, 0, reverseDuration);
+        }
+        colorGrading.postExposure.value = overdoseVal * exposureScaling;
     }
     void OnDestroy()
     {
