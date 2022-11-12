@@ -23738,7 +23738,7 @@ MonoBehaviour:
   useMultithreading: 1
   previousSelection: {fileID: 0}
   unloaded: 1
-  sceneChanging: 0
+  sceneChanging: 1
   waitForPrevious: 0
   previousVolume: {fileID: 0}
   optimizeForMixedLighting: 0
@@ -23754,7 +23754,7 @@ MonoBehaviour:
   lastFreeVolumeFillingRate: 0.01
   lastCornerProbesSpacing: 0.4
   lastDistanceFromGeometry: 0
-  debugMode: 1
+  debugMode: 0
   debugObjectScale: 0.1
   boundsDisplayMode: 0
   debugPass: 0
