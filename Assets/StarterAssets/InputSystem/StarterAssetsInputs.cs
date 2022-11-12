@@ -43,6 +43,7 @@ namespace StarterAssets
 			if(!moveAllowed)
 			{
 				isMoving = false;
+				move = Vector2.zero;
 				return;
 			}
 				

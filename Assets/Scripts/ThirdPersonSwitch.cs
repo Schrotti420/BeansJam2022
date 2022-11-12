@@ -34,10 +34,10 @@ public class ThirdPersonSwitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            Overdose();
-        }
+        // if(Input.GetKeyDown(KeyCode.F))
+        // {
+        //     Overdose();
+        // }
 
         if(raving)
         {
