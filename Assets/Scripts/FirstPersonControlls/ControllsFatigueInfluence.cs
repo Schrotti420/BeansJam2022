@@ -7,11 +7,12 @@ public class ControllsFatigueInfluence : MonoBehaviour
 {
     public int fatigueValue = 50;
     public FirstPersonController firstpersoncontroller;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-       
+       CalcPerlinNoise();
     }
 
     // Update is called once per frame
@@ -23,7 +24,7 @@ public class ControllsFatigueInfluence : MonoBehaviour
         
         // adjust movespeed
         MovementSpeedAdjust();
-        givePerlinNoise();
+        
     
     }
 
@@ -33,21 +34,46 @@ public class ControllsFatigueInfluence : MonoBehaviour
         firstpersoncontroller.MoveSpeed = fatigueValue*0.1f;        
     }
 
-    public int xCoord = 100;
-    public int yCoord = 100;
+    public float xCoord;
+    public float yCoord = 0.0f;
+    int arraycoord = 0;
 
-    public void givePerlinNoise() 
+    public void CalcPerlinNoise() 
     {
-         
-
-         for (int xCoord = 0; xCoord <= 100; xCoord++)
+        float[] floatArray = new float[100];
+             
+         for (float xCoord = 1; xCoord <= 100; xCoord++)
          {
-            for (int yCoord = 0; yCoord <= 100; yCoord++)
-            {
-                float sample = Mathf.PerlinNoise(xCoord, yCoord);
-                print(sample);
-            }   
+            float sample = Mathf.PerlinNoise(xCoord, yCoord);
+            floatArray[arraycoord] = sample;
+            arraycoord++;
          }
+         foreach (float coord in floatArray)
+         {
+            print(coord);
+         }
+         
+    }
+
+    // public void drunkWalk()
+    // {
+    //     if(fatigueValue >= 70)
+    //     {
+    //         if (Input.getKey("up"))
+    //         {
+    //             calcDrunkWalk();
+    //         }
+            
+    //         if (Input.getKey("down"))
+    //         {
+    //             calcDrunkWalk();
+    //         }
+    //     }
+    // }
+
+    public void calcDrunkWalk()
+    {
+
     }
     
     
