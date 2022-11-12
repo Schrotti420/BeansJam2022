@@ -7,6 +7,9 @@ TagManager:
   - CinemachineTarget
   - AlarmStatusImage
   - AlarmStatusSlider
+  - Drug
+  - Water
+  - Beer
   layers:
   - Default
   - TransparentFX

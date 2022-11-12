@@ -15,7 +15,10 @@ public class PatrolBasedOnPoints : MonoBehaviour
     //Alert Status variables
     Transform player;
     Image alarmStatusImage;
+    Image mask;
     Color currentColor;
+
+    //Image[] images;
 
     public Sprite spriteInitialState;
     public Sprite spriteAlarmState1;
@@ -23,24 +26,42 @@ public class PatrolBasedOnPoints : MonoBehaviour
 
     int alarmLevel = 0;
 
-    float MinDist = 1;
+    float MinDist = 5;
     float MoveSpeed = 3;
 
     Slider slider;
-    float targetProgress = 100;
-    public float SliderSpeed = 0.5f;
+    CanvasGroup canvasGroup;
+    float targetProgress = 7f;
+    public float SliderSpeed = 0.05f;
 
     float startTime = 0;
+    bool startTimer = false;
+    public float targetTime = 15f;
+
+    DrugAbuse drugAbuse;
+
+    Image Fill;
 
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         this.player = GameObject.FindWithTag("Player").transform;
-        alarmStatusImage = GameObject.Find("AlarmStatusImage").GetComponent<Image>();
-        slider = GameObject.Find("AlarmStatusSlider").GetComponent<Slider>();
+        alarmStatusImage = agent.GetComponentInChildren<Image>();
 
-        
+
+        /*images = agent.GetComponentsInChildren<Image>();
+        for(int i=0; i<images.Length; i++)
+        {
+            if (images[i].name == "AlarmStatusImage")
+                alarmStatusImage = images[i];
+            else
+                mask = images[i];
+        }*/
+        slider = agent.GetComponentInChildren<Slider>();
+        canvasGroup = slider.GetComponentInChildren<CanvasGroup>();
+        canvasGroup.alpha = 0;
+        Fill = slider.GetComponentInChildren<Image>();
 
         // Disabling auto-braking allows for continuous movement
         // between points (ie, the agent doesn't slow down as it
@@ -64,7 +85,9 @@ public class PatrolBasedOnPoints : MonoBehaviour
         // cycling to the start if necessary.
         //destPoint = (destPoint + 1) % points.Length;
         destPoint = Random.Range(0,points.Length);
-        Debug.Log("NormalPatrol");
+        Debug.Log(destPoint.ToString());
+
+        CheckCulprit();
     }
 
     void ChaseCulprit()
@@ -116,8 +139,12 @@ public class PatrolBasedOnPoints : MonoBehaviour
         //Debug.Log(distanceFromPlayer.ToString());
         //Debug.Log(angleToPlayer.ToString());
 
-        if (angleToPlayer <= 30 &&
-           distanceFromPlayer <= 10 /*&& erwischt*/ )
+        bool isDrugPicked = player.GetComponent<DrugAbuse>().isDrugPicked();
+        //Debug.Log("timer " + startTime.ToString());
+
+        if (angleToPlayer <= 50 &&
+           distanceFromPlayer <= 10 &&
+           isDrugPicked)
         {
             if (alarmLevel == 0)
             {
@@ -125,18 +152,23 @@ public class PatrolBasedOnPoints : MonoBehaviour
 
                 //Switch Sprite
                 alarmStatusImage.sprite = spriteAlarmState1;
+
                 alarmLevel = 1;
-                startTime = Time.time;
+
+                startTimer = true;
+                canvasGroup.alpha = 1;
             }
             else if (alarmLevel == 1)
             {
-                Debug.Log("Alert Level 2");
+                //canvasGroup.alpha = 0;
 
                 //Switch Sprite
                 alarmStatusImage.sprite = spriteAlarmState2;
                 alarmLevel = 2;
-            }
+                Fill.color = Color.red;
 
+                Debug.Log("Alert Level 2");
+            }
         }
     }
 
@@ -152,23 +184,38 @@ public class PatrolBasedOnPoints : MonoBehaviour
             if ((!agent.pathPending && agent.remainingDistance < 0.5f))
                 NormalPatrol();
 
-            CheckCulprit();
+           //CheckCulprit();
         }
         else if (alarmLevel == 1)
         {
-            ChaseCulprit();
-            float currentTime = Time.time;
+            if(startTimer)
+                startTime += Time.deltaTime;
 
-            if (currentTime - startTime <= 1000)
+            ChaseCulprit();
+
+
+            //Debug.Log(startTime.ToString());
+
+            Debug.Log("timer " + startTime.ToString() + " " + targetTime.ToString() + " " + targetProgress.ToString());
+            if (startTime <= targetTime && startTime > 1.5)
             {
                 CheckCulprit();
-            }
-            else
-            {
                 if (slider.value < targetProgress)
-                    slider.value += SliderSpeed * Time.deltaTime;
+                    //slider.value += (targetProgress/ (targetTime-startTime))* Time.deltaTime*SliderSpeed;
+                    slider.value = (startTime/(targetTime-1.5f))*targetProgress;
+            }
+            else if(startTime > targetTime)
+            {
 
+                startTime = 0;
+                startTimer = false;
                 alarmLevel = 0;
+                slider.value = 0;
+
+                //Switch Sprite
+                alarmStatusImage.sprite = spriteInitialState;
+                Debug.Log("Timer out");
+                
             }
         }
     }
