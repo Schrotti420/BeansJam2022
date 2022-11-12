@@ -324,6 +324,46 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 627738341367489793, guid: 8f14fdef6098e9844aa81d160f512704,
+        type: 3}
+      propertyPath: bloomScaling
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 627738341367489793, guid: 8f14fdef6098e9844aa81d160f512704,
+        type: 3}
+      propertyPath: defaultBloom
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 627738341367489793, guid: 8f14fdef6098e9844aa81d160f512704,
+        type: 3}
+      propertyPath: skippedFrames
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 627738341367489793, guid: 8f14fdef6098e9844aa81d160f512704,
+        type: 3}
+      propertyPath: exposureScaling
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 627738341367489793, guid: 8f14fdef6098e9844aa81d160f512704,
+        type: 3}
+      propertyPath: reverseDuration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 627738341367489793, guid: 8f14fdef6098e9844aa81d160f512704,
+        type: 3}
+      propertyPath: vignetteScaling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 627738341367489793, guid: 8f14fdef6098e9844aa81d160f512704,
+        type: 3}
+      propertyPath: tintLerpDuration
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 627738341367489793, guid: 8f14fdef6098e9844aa81d160f512704,
+        type: 3}
+      propertyPath: lensDistortionDuration
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 627738341367489798, guid: 8f14fdef6098e9844aa81d160f512704,
         type: 3}
       propertyPath: m_RootOrder

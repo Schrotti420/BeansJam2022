@@ -11,8 +11,12 @@ public class PostProcessingManipulation : MonoBehaviour
     [Header("Scaling parameters")]
     public float vignetteScaling;
     public float tintLerpDuration;
+    public float lensDistortionDuration;
     public float reverseDuration;
     public float exposureScaling;
+    public float defaultBloom;
+    public float bloomScaling;
+    public float chromaticAberrationScaling;
 
     [Header("Performance parameters")]
     [SerializeField]
@@ -22,8 +26,10 @@ public class PostProcessingManipulation : MonoBehaviour
     float m_overdose, m_fatigue;
     int m_tintValue;
     int m_hueValue;
+    int m_lensDistValue;
     Sequence tintSequence;
     Sequence hueSequence;
+    Sequence lensSequence;
 
     PostProcessVolume m_Volume;
     Vignette vignette;
@@ -31,6 +37,7 @@ public class PostProcessingManipulation : MonoBehaviour
     ColorGrading colorGrading;
     LensDistortion lensDistortion;
     Bloom bloom;
+    ChromaticAberration chromaticAberration;
 
     private void Start()
     {
@@ -50,6 +57,11 @@ public class PostProcessingManipulation : MonoBehaviour
 
         bloom = ScriptableObject.CreateInstance<Bloom>();
         bloom.enabled.Override(true);
+        bloom.fastMode.Override(true);
+
+        chromaticAberration = ScriptableObject.CreateInstance<ChromaticAberration>();
+        chromaticAberration.enabled.Override(true);
+        chromaticAberration.intensity.Override(0f);
 
         PostProcessEffectSettings[] settings = new PostProcessEffectSettings[]
         {
@@ -57,7 +69,8 @@ public class PostProcessingManipulation : MonoBehaviour
             motionBlur,
             colorGrading,
             lensDistortion,
-            bloom
+            bloom,
+            chromaticAberration
         };
 
         InitializeEffects();
@@ -67,11 +80,12 @@ public class PostProcessingManipulation : MonoBehaviour
 
     private void InitializeEffects()
     {
-        vignette.intensity.Override(1f);
+        vignette.intensity.Override(0f);
 
         colorGrading.gradingMode.Override(GradingMode.HighDefinitionRange);
         colorGrading.tonemapper.Override(Tonemapper.ACES);
         colorGrading.tint.Override(0f);
+        colorGrading.hueShift.Override(0f);
 
         lensDistortion.intensity.Override(0f);
 
@@ -95,6 +109,13 @@ public class PostProcessingManipulation : MonoBehaviour
             colorGrading.tint.value = m_tintValue;
             colorGrading.hueShift.value = m_hueValue;
 
+            AdjustLensDistortion(m_overdose);
+            lensDistortion.intensity.value = m_lensDistValue;
+
+            AdjustBloom(m_overdose);
+
+            AdjustChromaticAberration();
+
             m_frameCounter = skippedFrames;
         }
     }
@@ -110,7 +131,7 @@ public class PostProcessingManipulation : MonoBehaviour
 
     void AdjustColorgrading(float overdoseVal)
     {
-        if(overdoseVal > .75f)
+        if(overdoseVal > .5f)
         {
             if (!tintSequence.IsPlaying())
             {
@@ -129,13 +150,39 @@ public class PostProcessingManipulation : MonoBehaviour
         }
         else
         {
-            if(tintSequence != null) tintSequence.Kill();
+            if(tintSequence.IsActive()) tintSequence.Kill();
             if(m_tintValue != 0) DOTween.To(() => m_tintValue, x => m_tintValue = x, 0, reverseDuration);
 
-            if(hueSequence != null) hueSequence.Kill();
-            if(m_hueValue != 0) DOTween.To(() => m_tintValue, x => m_tintValue = x, 0, reverseDuration);
+            if(hueSequence.IsActive()) hueSequence.Kill();
+            if(m_hueValue != 0) DOTween.To(() => m_hueValue, x => m_hueValue = x, 0, reverseDuration);
         }
         colorGrading.postExposure.value = overdoseVal * exposureScaling;
+    }
+    void AdjustLensDistortion(float overdoseVal)
+    {
+        if (overdoseVal > .75f)
+        {
+            if (!lensSequence.IsPlaying())
+            {
+                lensSequence = DOTween.Sequence();
+                lensSequence.Append(DOTween.To(() => m_lensDistValue, x => m_lensDistValue = x, 20, lensDistortionDuration));
+                lensSequence.Append(DOTween.To(() => m_lensDistValue, x => m_lensDistValue = x, -20, lensDistortionDuration));
+                lensSequence.SetLoops(-1, LoopType.Restart);
+            }
+        }
+        else
+        {
+            if (lensSequence.IsActive()) lensSequence.Kill();
+            if (m_lensDistValue != 0) DOTween.To(() => m_lensDistValue, x => m_lensDistValue = x, 0, reverseDuration);
+        }
+    }
+    void AdjustBloom(float overdoseVal)
+    {
+        bloom.intensity.value = overdoseVal * bloomScaling + defaultBloom;
+    }
+    void AdjustChromaticAberration(float overdoseVal)
+    {
+        chromaticAberration.intensity.value = overdoseVal * chromaticAberrationScaling;
     }
     void OnDestroy()
     {
