@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 18318765}
   - component: {fileID: 18318764}
+  - component: {fileID: 18318766}
   m_Layer: 0
   m_Name: PublicSettings
   m_TagString: Untagged
@@ -168,6 +169,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &18318766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18318763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f4cd991ea4f26e41a818d66dc631906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameLoopScenes: []
+  mainMenueScenes: []
 --- !u!1 &89178149
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,13 +872,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1068120888}
   m_HandleRect: {fileID: 1310941704}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
+  m_MinValue: -80
+  m_MaxValue: 10
+  m_WholeNumbers: 1
   m_Value: 0.7
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 18318764}
+        m_TargetAssemblyTypeName: MasterSoundController, Assembly-CSharp
+        m_MethodName: SetMasterVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &990109003
 GameObject:
   m_ObjectHideFlags: 0
