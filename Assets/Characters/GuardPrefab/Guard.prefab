@@ -9,8 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1802125268626559169}
+  - component: {fileID: 1137855271}
+  - component: {fileID: 1137855272}
+  - component: {fileID: 1137855273}
+  - component: {fileID: 1137855275}
   m_Layer: 0
-  m_Name: Ch18_nonPBRGuardRoot
+  m_Name: Guard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,6 +36,75 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1137855271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8040678478849645924}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6208ba1754602a8418ecb0f6e231dc0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteInitialState: {fileID: 21300000, guid: f3daaacb73df8164dab8fa9a5d40de62, type: 3}
+  spriteAlarmState1: {fileID: 21300000, guid: 426871c9b541ba54ca9a16b9a0ce9838, type: 3}
+--- !u!114 &1137855272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8040678478849645924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d08ea5913bd683242bbf7225126ff149, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  spriteInitialState: {fileID: 21300000, guid: f3daaacb73df8164dab8fa9a5d40de62, type: 3}
+  spriteAlarmState1: {fileID: 21300000, guid: 426871c9b541ba54ca9a16b9a0ce9838, type: 3}
+  spriteAlarmState2: {fileID: 0}
+  SliderSpeed: 0.5
+--- !u!195 &1137855273
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8040678478849645924}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &1137855275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8040678478849645924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09dc9afb14af1b84d990240759451348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1582809103875700936
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39,6 +112,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1802125268626559169}
     m_Modifications:
+    - target: {fileID: 1904056431763455727, guid: 485f34aa28b78174dbba30416d6de09b,
+        type: 3}
+      propertyPath: playSpeed
+      value: 3.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8184073017861374305, guid: 485f34aa28b78174dbba30416d6de09b,
         type: 3}
       propertyPath: m_Name
