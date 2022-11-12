@@ -125,13 +125,24 @@ public class PostProcessingManipulation : MonoBehaviour
 
             AdjustChromaticAberration(m_overdose);
 
+            Debug.Log($"Tint: {m_tintValue}; Hue: {m_hueValue}; Lens: {m_lensDistValue}");
+
             m_frameCounter = skippedFrames;
         }
     }
     void CalculateOverdoseFatigue()
     {
-        m_overdose = Mathf.Clamp((PlayerStats.Instance.Fatigue - 50 / 50), 0f, 1f);
-        m_fatigue = Mathf.Clamp((PlayerStats.Instance.Fatigue +50 / 50), 0f, 1f);
+
+        //m_overdose = PlayerStats.Instance.Fatigue > 50 ? Mathf.Clamp(((PlayerStats.Instance.Fatigue - 50) / 50f), 0f, 1f) : 0f;
+        m_overdose = PlayerStats.Instance.Fatigue > 50 ? map(PlayerStats.Instance.Fatigue, 50, 0, 0, 1): 0;
+        //m_fatigue = PlayerStats.Instance.Fatigue < 50 ? Mathf.Clamp(((PlayerStats.Instance.Fatigue) / 50f), 0f, 1f) : 0f;
+        m_fatigue = PlayerStats.Instance.Fatigue < 50 ? map(PlayerStats.Instance.Fatigue, 50, 100, 0, 1) : 0;
+
+        Debug.Log($"Overdose : Fatigue - {m_overdose} : {m_fatigue}");
+    }
+    float map(float value, float low1, float high1, float low2, float high2)
+    {
+        return low2 + (value - low1) * (high2 - low2) / (high1 - low1) * -1;
     }
     void AdjustVignette(float fatigueval)
     {
@@ -142,23 +153,26 @@ public class PostProcessingManipulation : MonoBehaviour
     {
         if(fatigueVal > 0f)
         {
-            colorGrading.saturation.value = fatigueVal;
+            colorGrading.saturation.value = fatigueVal * -100;
         }
         if(overdoseVal > .5f)
         {
-            if (!tintSequence.IsPlaying())
+            Debug.Log("Overdosing high enough for tint and hue switch");
+            if (tintSequence == null || !tintSequence.IsPlaying())
             {
                 tintSequence = DOTween.Sequence();
                 tintSequence.Append(DOTween.To(() => m_tintValue, x => m_tintValue = x, 100, tintLerpDuration));
                 tintSequence.Append(DOTween.To(() => m_tintValue, x => m_tintValue = x, -100, tintLerpDuration));
                 tintSequence.SetLoops(-1, LoopType.Restart);
+                tintSequence.Play();
             }
-            if (!hueSequence.IsPlaying())
+            if (hueSequence == null || !hueSequence.IsPlaying())
             {
                 hueSequence = DOTween.Sequence();
                 hueSequence.Append(DOTween.To(() => m_hueValue, x => m_hueValue = x, 180, tintLerpDuration));
                 hueSequence.Append(DOTween.To(() => m_hueValue, x => m_hueValue = x, -180, tintLerpDuration));
                 hueSequence.SetLoops(-1, LoopType.Restart);
+                hueSequence.Play();
             }
         }
         else
@@ -175,12 +189,13 @@ public class PostProcessingManipulation : MonoBehaviour
     {
         if (overdoseVal > .75f)
         {
-            if (!lensSequence.IsPlaying())
+            if (lensSequence != null && !lensSequence.IsPlaying())
             {
                 lensSequence = DOTween.Sequence();
                 lensSequence.Append(DOTween.To(() => m_lensDistValue, x => m_lensDistValue = x, 20, lensDistortionDuration));
                 lensSequence.Append(DOTween.To(() => m_lensDistValue, x => m_lensDistValue = x, -20, lensDistortionDuration));
                 lensSequence.SetLoops(-1, LoopType.Restart);
+                lensSequence.Play();
             }
         }
         else
