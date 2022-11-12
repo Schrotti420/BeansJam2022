@@ -12,6 +12,7 @@ namespace StarterAssets
 		private float influence;
 		private bool isMoving;
 		private Vector2 lastInput;
+		public bool moveAllowed = true;
 
 		[Header("Character Input Values")]
 		public Vector2 move;
@@ -39,6 +40,13 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 		public void OnMove(InputValue value)
 		{
+			if(!moveAllowed)
+			{
+				isMoving = false;
+				return;
+			}
+				
+
 			Debug.Log($"Noise Influence: {influence}");
 			//float slowness = fatigueControls.GetFatigueValue();
             //Debug.Log($"Slowness Influence: {slowness}");
@@ -64,15 +72,21 @@ namespace StarterAssets
 			}
 		}
 
-		public void OnJump(InputValue value)
-		{
-			JumpInput(value.isPressed);
-		}
+		// public void OnJump(InputValue value)
+		// {
+		// 	if(!moveAllowed)
+		// 		return;
 
-		public void OnSprint(InputValue value)
-		{
-			SprintInput(value.isPressed);
-		}
+		// 	JumpInput(value.isPressed);
+		// }
+
+		// public void OnSprint(InputValue value)
+		// {
+		// 	if(!moveAllowed)
+		// 		return;
+
+		// 	SprintInput(value.isPressed);
+		// }
 #endif
 
 
