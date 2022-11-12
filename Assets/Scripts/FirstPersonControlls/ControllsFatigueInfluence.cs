@@ -36,19 +36,19 @@ public class ControllsFatigueInfluence : MonoBehaviour
 
     public float xCoord;
     public float yCoord = 0.0f;
-    float arraycoord = 0;
+    int arraycoord = 0;
 
     public void CalcPerlinNoise() 
     {
         float[] floatArray = new float[100];
              
-         for (float xCoord = 1; xCoord < 100; xCoord++)
+         for (float xCoord = 1; xCoord <= 100; xCoord++)
          {
             float sample = Mathf.PerlinNoise(xCoord, yCoord);
             floatArray[arraycoord] = sample;
             arraycoord++;
          }
-         foreach (float coord in arraycoord)
+         foreach (float coord in floatArray)
          {
             print(coord);
          }
