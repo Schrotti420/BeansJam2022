@@ -1242,10 +1242,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7491d1d033f92a04aa0e56d4c45064af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  degreesPerSecond: 3
-  minMaxYRotation: {x: -60, y: 70}
+  degreesPerSecond: 10
+  minMaxYRotation: {x: -50, y: 50}
   yRotationRoot: {fileID: 1179904473}
-  minMaxZRotation: {x: 32, y: 208}
+  minMaxZRotation: {x: 0, y: 360}
   zRotationRoot: {fileID: 1179904472}
 --- !u!64 &1186637578
 MeshCollider:

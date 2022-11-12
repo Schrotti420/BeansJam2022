@@ -16,22 +16,29 @@ public class SimpleSpotLightAnimator : MonoBehaviour
     [SerializeField]
     Transform zRotationRoot;
 
-    private bool yAxisPositive, zAxisPositive;
+    private bool yAxisPositive = true, zAxisPositive = true;
 
     // Update is called once per frame
     void Update()
     {
-        yRotationRoot.localRotation = Quaternion.Euler(new Vector3(0f, AddRotation(IsAxisDirectionPositive(minMaxYRotation, yRotationRoot.localEulerAngles.y), yRotationRoot.localEulerAngles.y), 0f));
-        zRotationRoot.localRotation = Quaternion.Euler(new Vector3(0f, 90f, AddRotation(IsAxisDirectionPositive(minMaxZRotation, zRotationRoot.localEulerAngles.z), zRotationRoot.localEulerAngles.y)));
-    }
-    private bool IsAxisDirectionPositive(Vector2 minMax, float rotation)
-    {
-        if(rotation < minMax.x) return true;
-        else return false;
+        PingPong();
+
+        Debug.Log($"Y Direction: {yAxisPositive}");
+        Debug.Log($"Z Direction: {zAxisPositive}");
     }
     private float AddRotation(bool isPositiveDirection, float rotation)
     {
         if (isPositiveDirection) return rotation + (degreesPerSecond * Time.deltaTime);
         else return rotation - (degreesPerSecond * Time.deltaTime);
+    }
+    public void PingPong()
+    {
+        if(yRotationRoot.localEulerAngles.y < minMaxYRotation.x) yAxisPositive = true;
+        if(yRotationRoot.localEulerAngles.y > minMaxYRotation.y) yAxisPositive = false;
+        yRotationRoot.localRotation = Quaternion.Euler(new Vector3(0f, AddRotation(yAxisPositive, yRotationRoot.localEulerAngles.y), 0f));
+
+        if (zRotationRoot.localEulerAngles.z < minMaxYRotation.x) zAxisPositive = true;
+        if (zRotationRoot.localEulerAngles.z > minMaxYRotation.y) zAxisPositive = false;
+        zRotationRoot.localRotation = Quaternion.Euler(new Vector3(0f, 90f, AddRotation(zAxisPositive, zRotationRoot.localEulerAngles.z)));
     }
 }
