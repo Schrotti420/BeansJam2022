@@ -319,51 +319,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 627738341367489793, guid: 8f14fdef6098e9844aa81d160f512704,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 627738341367489793, guid: 8f14fdef6098e9844aa81d160f512704,
-        type: 3}
-      propertyPath: bloomScaling
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 627738341367489793, guid: 8f14fdef6098e9844aa81d160f512704,
-        type: 3}
-      propertyPath: defaultBloom
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 627738341367489793, guid: 8f14fdef6098e9844aa81d160f512704,
-        type: 3}
-      propertyPath: skippedFrames
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 627738341367489793, guid: 8f14fdef6098e9844aa81d160f512704,
-        type: 3}
-      propertyPath: exposureScaling
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 627738341367489793, guid: 8f14fdef6098e9844aa81d160f512704,
-        type: 3}
-      propertyPath: reverseDuration
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 627738341367489793, guid: 8f14fdef6098e9844aa81d160f512704,
-        type: 3}
-      propertyPath: vignetteScaling
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 627738341367489793, guid: 8f14fdef6098e9844aa81d160f512704,
-        type: 3}
-      propertyPath: tintLerpDuration
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 627738341367489793, guid: 8f14fdef6098e9844aa81d160f512704,
-        type: 3}
-      propertyPath: lensDistortionDuration
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 627738341367489798, guid: 8f14fdef6098e9844aa81d160f512704,
         type: 3}
       propertyPath: m_RootOrder
@@ -426,26 +381,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f14fdef6098e9844aa81d160f512704, type: 3}
---- !u!1 &627738341681851726 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 627738341367489799, guid: 8f14fdef6098e9844aa81d160f512704,
-    type: 3}
-  m_PrefabInstance: {fileID: 627738341681851725}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &627738341681851727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 627738341681851726}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 1a16e81625ec3a945947c39116e37954, type: 2}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 1
-  priority: 150

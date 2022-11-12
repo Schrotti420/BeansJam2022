@@ -9,13 +9,21 @@ using UnityEngine.Rendering.PostProcessing;
 public class PostProcessingManipulation : MonoBehaviour
 {
     [Header("Scaling parameters")]
+    [Range(0f, 1f)]
     public float vignetteScaling;
+    [Range(0f, 8f)]
     public float tintLerpDuration;
+    [Range(0f, 8f)]
     public float lensDistortionDuration;
+    [Range(0f, 8f)]
     public float reverseDuration;
+    [Range(0f, 2f)]
     public float exposureScaling;
+    [Range(0, 30)]
     public float defaultBloom;
+    [Range(0, 50)]
     public float bloomScaling;
+    [Range(0, 5f)]
     public float chromaticAberrationScaling;
 
     [Header("Performance parameters")]
@@ -86,6 +94,7 @@ public class PostProcessingManipulation : MonoBehaviour
         colorGrading.tonemapper.Override(Tonemapper.ACES);
         colorGrading.tint.Override(0f);
         colorGrading.hueShift.Override(0f);
+        colorGrading.saturation.Override(0f);
 
         lensDistortion.intensity.Override(0f);
 
@@ -105,7 +114,7 @@ public class PostProcessingManipulation : MonoBehaviour
             //edit effects
             AdjustVignette(m_fatigue);
 
-            AdjustColorgrading(m_overdose);
+            AdjustColorgrading(m_overdose, m_fatigue);
             colorGrading.tint.value = m_tintValue;
             colorGrading.hueShift.value = m_hueValue;
 
@@ -129,8 +138,12 @@ public class PostProcessingManipulation : MonoBehaviour
         vignette.intensity.value = fatigueval * vignetteScaling;
     }
 
-    void AdjustColorgrading(float overdoseVal)
+    void AdjustColorgrading(float overdoseVal, float fatigueVal)
     {
+        if(fatigueVal > 0f)
+        {
+            colorGrading.saturation.value = fatigueVal;
+        }
         if(overdoseVal > .5f)
         {
             if (!tintSequence.IsPlaying())
