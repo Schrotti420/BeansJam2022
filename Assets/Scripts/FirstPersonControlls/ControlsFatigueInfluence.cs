@@ -7,7 +7,21 @@ public class ControlsFatigueInfluence : MonoBehaviour
 {
     public int fatigueValue = 50;
     public FirstPersonController firstpersoncontroller;
-    
+
+    [Header("Noise parameters")]
+    [SerializeField]
+    private float sampleCount;
+    [SerializeField]
+    private float sampleStep;
+    [SerializeField]
+    private float noiseScaling;
+    //[SerializeField]
+    private List<float> noise = new List<float>();
+    private int noiseArrayIndex = 0;
+
+    [Header("Fatigue parameters")]
+    [SerializeField]
+    private float fatigueMovementInfluenceScaling = .1f;
 
     // Start is called before the first frame update
     void Start()
@@ -18,20 +32,14 @@ public class ControlsFatigueInfluence : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // get fatigue value
-        
-        // get overdose value
-        
-        // adjust movespeed
-        MovementSpeedAdjust();
-        
-    
+        if (noiseArrayIndex >= noise.Count -1) noiseArrayIndex = 0;
+        noiseArrayIndex++;
     }
 
     //movement speed gets adjusted when fatigue value changes
-    public void MovementSpeedAdjust() 
+    public float GetFatigueValue() 
     {
-        firstpersoncontroller.MoveSpeed = fatigueValue*0.1f;        
+        return PlayerStats.Instance.Fatigue * fatigueMovementInfluenceScaling;       
     }
 
     float xCoord = 0.0f;
@@ -40,40 +48,15 @@ public class ControlsFatigueInfluence : MonoBehaviour
 
     public void CalcPerlinNoise() 
     {
-        float[] floatArray = new float[100];
-             
-         for (int arraycoord = 1; arraycoord <= 100; arraycoord++)
-         {
-            float sample = Mathf.PerlinNoise(xCoord, yCoord);
-            floatArray[arraycoord] = sample;
-            xCoord++;
-         }
-         
-            print(floatArray[4]);
-            print(floatArray[86]);
-         
-         
+        for (int i = 0; i < sampleCount * sampleStep; i++)
+        {
+            noise.Add((Mathf.PerlinNoise(0f, i / sampleStep) - .5f) * noiseScaling);
+        }
     }
 
-    // public void drunkWalk()
-    // {
-    //     if(fatigueValue >= 70)
-    //     {
-    //         if (Input.getKey("up"))
-    //         {
-    //             calcDrunkWalk();
-    //         }
-            
-    //         if (Input.getKey("down"))
-    //         {
-    //             calcDrunkWalk();
-    //         }
-    //     }
-    // }
-
-    public void calcDrunkWalk()
+    public float GetFatigueNoiseInfluence() 
     {
-
+        return noise[noiseArrayIndex];
     }
     
     
