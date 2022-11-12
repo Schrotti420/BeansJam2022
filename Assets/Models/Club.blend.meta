@@ -3,7 +3,62 @@ guid: f6f2c2b62e68ad14b95d1d4665e36d18
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bar
+    second: {fileID: 2100000, guid: 14c807e05e1863b49a3b0baea07afe7a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bier
+    second: {fileID: 2100000, guid: 916e55224cc331b4aa9064b8e65b927e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Black_Plastic
+    second: {fileID: 2100000, guid: de15be246ce24f442a49ef8791bef617, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor
+    second: {fileID: 2100000, guid: 6d0edeb51e9bdd3499118df74a89ed11, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gin
+    second: {fileID: 2100000, guid: 8b563e838fc720948966b90b91f3ce2a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LED_Spots
+    second: {fileID: 2100000, guid: 71e2f4382cc0891448689ee145ff7ec5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pillar
+    second: {fileID: 2100000, guid: e74c9d49c0899c043baf676ac79f5cd9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stage
+    second: {fileID: 2100000, guid: 0614e2dcb0b805f4aa6aaa0e8c9170d5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stairs
+    second: {fileID: 2100000, guid: 0c78f6325200e3d4a833846ea1229efe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall
+    second: {fileID: 2100000, guid: 319a0d702815dfa48bd3168bd5c89601, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wasser
+    second: {fileID: 2100000, guid: 11b3c352949e9e14f939ae58f2b529a2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
