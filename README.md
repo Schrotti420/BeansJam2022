@@ -2,7 +2,7 @@
 
 Welcome to our Git repository of the BeansJam2022 game StayARave.
 
-##Game
+## Game
 You play a Raver in a techno Club. The goal is to stay awake until the club closes.
 To do that, you have to consume certain substances, which influence the following values:
 - attention
