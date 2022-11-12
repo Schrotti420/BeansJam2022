@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using StarterAssets;
 
-public class ControllsFatigueInfluence : MonoBehaviour
+public class ControlsFatigueInfluence : MonoBehaviour
 {
     public int fatigueValue = 50;
     public FirstPersonController firstpersoncontroller;
@@ -34,24 +34,24 @@ public class ControllsFatigueInfluence : MonoBehaviour
         firstpersoncontroller.MoveSpeed = fatigueValue*0.1f;        
     }
 
-    public float xCoord;
-    public float yCoord = 0.0f;
-    int arraycoord = 0;
+    float xCoord = 0.0f;
+    float yCoord = 0.0f;
+    int arraycoord;
 
     public void CalcPerlinNoise() 
     {
         float[] floatArray = new float[100];
              
-         for (float xCoord = 1; xCoord <= 100; xCoord++)
+         for (int arraycoord = 1; arraycoord <= 100; arraycoord++)
          {
             float sample = Mathf.PerlinNoise(xCoord, yCoord);
             floatArray[arraycoord] = sample;
-            arraycoord++;
+            xCoord++;
          }
-         foreach (float coord in floatArray)
-         {
-            print(coord);
-         }
+         
+            print(floatArray[4]);
+            print(floatArray[86]);
+         
          
     }
 
