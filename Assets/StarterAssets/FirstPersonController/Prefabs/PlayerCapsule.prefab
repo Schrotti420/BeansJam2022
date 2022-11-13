@@ -189,7 +189,7 @@ CharacterController:
   m_StepOffset: 0.25
   m_SkinWidth: 0.02
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0.93, z: 0}
+  m_Center: {x: 0, y: 1.05, z: 0}
 --- !u!114 &8616685848737228371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,7 +368,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8646abf0669cdb9488c71e7680e6c46c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fatigueValue: 50
   firstpersoncontroller: {fileID: 8616685848737228371}
   sampleCount: 10
   sampleStep: 100
