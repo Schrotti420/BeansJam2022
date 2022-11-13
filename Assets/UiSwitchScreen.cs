@@ -38,4 +38,8 @@ public class UiSwitchScreen : MonoBehaviour
         if(!pauseMenuRoot.activeSelf) Cursor.lockState = CursorLockMode.Locked;
         else Cursor.lockState = CursorLockMode.None;
     }
+    public void OnRave(InputValue val)
+    {
+        Debug.Log("Detected rave");
+    }
 }

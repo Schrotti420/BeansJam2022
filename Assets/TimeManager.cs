@@ -51,7 +51,7 @@ public class TimeManager : MonoBehaviour
         {
             AnimateClock();
         }
-        else if (!isWon)
+        else if (!isWon && maxGameTimeInS <= 0)
         {
             isWon = true;
             ShowWinScreen();
@@ -67,24 +67,33 @@ public class TimeManager : MonoBehaviour
     }
     private void ShowWinScreen()
     {
+        UnlockCursor();
         SceneManager.LoadScene(winScreen.sceneName, winScreen.loadSceneMode);
     }
     public void ShowOverdoseScreen()
     {
+        UnlockCursor();
         if (isWon) return;
         isLost = true;
         SceneManager.LoadScene(overdoseScreen.sceneName, overdoseScreen.loadSceneMode);
     }
     public void ShowAsleepScreen()
     {
+        UnlockCursor();
         if (isWon) return;
         isLost = true;
         SceneManager.LoadScene(asleepScreen.sceneName, asleepScreen.loadSceneMode);
     }
     public void ShowCaughtScreen()
     {
+        UnlockCursor();
         if (isWon) return;
         isLost = true;
         SceneManager.LoadScene(caughtScreen.sceneName, caughtScreen.loadSceneMode);
+    }
+    private void UnlockCursor()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }
