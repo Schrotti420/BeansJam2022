@@ -19,6 +19,12 @@ public class UiSwitchScreen : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+
+    void Update()
+    {
+        
+    }
+
     public void SwitchScreen(RectTransform newScreen)
     {
         currentScreen.DOMove(abovePosition.position, transitionDuration);
@@ -29,18 +35,14 @@ public class UiSwitchScreen : MonoBehaviour
     public void HideShowUI()
     {
         pauseMenuRoot.SetActive(!pauseMenuRoot.activeSelf);
-    }
-
-    public void OnPauseMenu(InputValue value)
-    {
-        Debug.Log("Escape was pressed!");
-        HideShowUI();
+        //Time.timeScale = pauseMenuRoot.activeSelf ? 0.0f : 1.0f;
         Cursor.visible = pauseMenuRoot.activeSelf;
         if(!pauseMenuRoot.activeSelf) Cursor.lockState = CursorLockMode.Locked;
         else Cursor.lockState = CursorLockMode.None;
     }
-    public void OnRave(InputValue val)
+
+    public void OnPauseMenu(InputValue value)
     {
-        Debug.Log("Detected rave");
+        HideShowUI();
     }
 }
