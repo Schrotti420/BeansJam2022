@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414738, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.1273174, g: 0.13414761, b: 0.12107885, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -861,7 +861,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ac410d053e6194c4db1a07e13fcf3193, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 399ae886e1c18c24aabd71a659f71e29, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1532,7 +1532,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 953116dc7a3f87d4ab3034d4b3eb5b66, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cb0b8f3d9ebe06549bbe967ec8f24824, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2350,24 +2350,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac6ea23822c251e40b0ebbaf12552d8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2088147708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1807713742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 064ca70f2746148409b93cd0fa10548e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentScreen: {fileID: 1497166979}
-  transitionDuration: 0.5
-  belowPosition: {fileID: 1136287263}
-  abovePosition: {fileID: 1958337885}
-  centerPosition: {fileID: 694673942}
-  pauseMenuRoot: {fileID: 1282259124}
 --- !u!114 &2088147699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2387,6 +2369,24 @@ MonoBehaviour:
   maxPosition_firstFloor: {x: 2.123, y: 0, z: 4.54}
   minPosition_secFloor: {x: -1.885, y: 7, z: -0.91}
   maxPosition_secFloor: {x: 1.364, y: 7, z: 4.815}
+--- !u!114 &2088147708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807713742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 064ca70f2746148409b93cd0fa10548e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScreen: {fileID: 1497166979}
+  transitionDuration: 0.5
+  belowPosition: {fileID: 1136287263}
+  abovePosition: {fileID: 1958337885}
+  centerPosition: {fileID: 694673942}
+  pauseMenuRoot: {fileID: 1282259124}
 --- !u!1001 &6212469128704593550
 PrefabInstance:
   m_ObjectHideFlags: 0
