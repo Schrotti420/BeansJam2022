@@ -238,7 +238,7 @@ public class PatrolBasedOnPoints : MonoBehaviour
             //Debug.Log(startTime.ToString());
 
             //Debug.Log("timer " + startTime.ToString() + " " + targetTime.ToString() + " " + targetProgress.ToString());
-            if (startTime <= targetTime && startTime > 1.5)
+            if (startTime <= targetTime && startTime > 2)
             {
                 CheckCulprit();
                 if (slider.value < targetProgress)
