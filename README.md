@@ -19,28 +19,31 @@ What to do:
 - consume different substances
 
 Controls:
+- Mouse   -> Camera
 - W-A-S-D -> Move
 - Space   -> Jump
 - R       -> Rave
 
-
 Control influences:
-- the player controls will be influenced by your overdose and fatigue level
+- the player controls and sences will be influenced by your overdose and fatigue level
 
 ## Development challanges
 - cops pathfinder which is influenced by the attention score
 - NPCs with animations (e.g. dancing)
 - player control influences
 
-## used Assets
+## Used Assets
 - [Starter Assets - First Person Character Controller](https://assetstore.unity.com/packages/essentials/starter-assets-first-person-character-controller-196525)
+- [Character an Animations in Mixamo](https://www.mixamo.com/)
 
 
-## used Tools
+## Used Tools
 - Unity (Version: 2021.3.13f1)
 - Github (obviously)
 - [Excalidraw](https://excalidraw.com/)
 - Blender
+- Gimp
+- Logic Pro
 
 ## Team
 - [Florian](https://github.com/Schrotti420)
