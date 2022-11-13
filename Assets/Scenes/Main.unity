@@ -1016,8 +1016,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winScreen:
-    sceneName: 
-    loadSceneMode: 0
+    sceneName: YouWin
+    loadSceneMode: 1
+  asleepScreen:
+    sceneName: FatigueDie
+    loadSceneMode: 1
+  caughtScreen:
+    sceneName: AttentionDie
+    loadSceneMode: 1
+  overdoseScreen:
+    sceneName: OverdoseDie
+    loadSceneMode: 1
   maxGameTimeInS: 300
   hourInClub: 10
   hoursPointer: {fileID: 197854967}

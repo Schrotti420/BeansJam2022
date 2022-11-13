@@ -5,8 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class TimeManager : MonoBehaviour
 {
+    public static TimeManager Instance;
+
     [SerializeField]
     private SceneLoadingStruct winScreen;
+    [SerializeField]
+    private SceneLoadingStruct asleepScreen;
+    [SerializeField]
+    private SceneLoadingStruct caughtScreen;
+    [SerializeField]
+    private SceneLoadingStruct overdoseScreen;
     [SerializeField]
     float maxGameTimeInS;
     float overallGameTime;
@@ -21,9 +29,11 @@ public class TimeManager : MonoBehaviour
     [SerializeField]
     RectTransform hoursPointer, minutesPointer;
     bool isWon = false;
+    bool isLost = false;
 
     private void Start()
     {
+        Instance = this;
         overallGameTime = maxGameTimeInS;
         hourPointerOverallRotation = hourInClub * 30;
         minutePointerOverallRotation = hourInClub * 360;
@@ -37,11 +47,11 @@ public class TimeManager : MonoBehaviour
     {
         maxGameTimeInS -= Time.deltaTime;
 
-        if(maxGameTimeInS > 0 && !isWon)
+        if (maxGameTimeInS > 0 && !isWon && !isLost)
         {
             AnimateClock();
         }
-        else
+        else if (!isWon)
         {
             isWon = true;
             ShowWinScreen();
@@ -58,5 +68,23 @@ public class TimeManager : MonoBehaviour
     private void ShowWinScreen()
     {
         SceneManager.LoadScene(winScreen.sceneName, winScreen.loadSceneMode);
+    }
+    public void ShowOverdoseScreen()
+    {
+        if (isWon) return;
+        isLost = true;
+        SceneManager.LoadScene(overdoseScreen.sceneName, overdoseScreen.loadSceneMode);
+    }
+    public void ShowAsleepScreen()
+    {
+        if (isWon) return;
+        isLost = true;
+        SceneManager.LoadScene(asleepScreen.sceneName, asleepScreen.loadSceneMode);
+    }
+    public void ShowCaughtScreen()
+    {
+        if (isWon) return;
+        isLost = true;
+        SceneManager.LoadScene(caughtScreen.sceneName, caughtScreen.loadSceneMode);
     }
 }

@@ -69,6 +69,8 @@ public class ThirdPersonSwitch : MonoBehaviour
             targetValue, 1.0f).OnComplete(() =>
             {
                 inputScript.moveAllowed = firstPerson;
+                fpCharacter.transform.GetChild(0).transform.localPosition = Vector3.zero;
+                fpCharacter.transform.GetChild(0).transform.localRotation = Quaternion.identity;
                 fpCharacter.SetActive(!firstPerson);
             });
     }
@@ -88,7 +90,7 @@ public class ThirdPersonSwitch : MonoBehaviour
             x => virtualCam.GetCinemachineComponent<Cinemachine.Cinemachine3rdPersonFollow>().CameraDistance = x,
             5.0f, 1.0f).OnComplete(() =>
             {
-
+                TimeManager.Instance.ShowAsleepScreen();
             });
     }
 
@@ -106,7 +108,7 @@ public class ThirdPersonSwitch : MonoBehaviour
             x => virtualCam.GetCinemachineComponent<Cinemachine.Cinemachine3rdPersonFollow>().CameraDistance = x,
             5.0f, 1.0f).OnComplete(() =>
             {
-
+                TimeManager.Instance.ShowOverdoseScreen();
             });
     }
 }
