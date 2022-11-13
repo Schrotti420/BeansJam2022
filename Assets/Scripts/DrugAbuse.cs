@@ -41,7 +41,8 @@ public class DrugAbuse : MonoBehaviour
             drugPicked = true;
             startTimer = true;
             attention = 2;
-            PlayerStats.Instance.attentionStatus(2f,true,timeAtt);
+            if(PlayerStats.Instance.CaughtByGuardStatus) 
+                PlayerStats.Instance.attentionStatus(2f,true,timeAtt);
         }
         else if (collision.gameObject.tag == "Water")
         {
@@ -60,7 +61,7 @@ public class DrugAbuse : MonoBehaviour
             Destroy(collision.gameObject);
             beerPicked = true;
             attention = 0;
-            PlayerStats.Instance.attentionStatus(0f,false, timeAtt);
+            PlayerStats.Instance.attentionStatus(1f,false, timeAtt);
         }
     }
 
