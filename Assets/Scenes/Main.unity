@@ -1425,7 +1425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beerUIRoot: {fileID: 1692355300}
   barUiButtons: []
-  beerInfluenceOnOverdose: 5
+  beerInfluenceOnOverdose: 15
   waterInfluenceOnFatigue: 5
 --- !u!1001 &814849083
 PrefabInstance:
@@ -2282,6 +2282,8 @@ MonoBehaviour:
     loadSceneMode: 1
   - sceneName: Club
     loadSceneMode: 1
+  - sceneName: AlertSystem
+    loadSceneMode: 1
   mainMenueScenes:
   - sceneName: MainMenu
     loadSceneMode: 0
@@ -2626,6 +2628,7 @@ MonoBehaviour:
   maxPosition_firstFloor: {x: 26, y: 0.3, z: 10}
   minPosition_secFloor: {x: 2.5, y: 6.5, z: -15}
   maxPosition_secFloor: {x: 19, y: 6.5, z: 12}
+  spawnCountInOneFrame_FirstFloor: 3
 --- !u!114 &2088147708
 MonoBehaviour:
   m_ObjectHideFlags: 0

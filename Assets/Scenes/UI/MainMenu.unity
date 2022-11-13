@@ -188,6 +188,8 @@ MonoBehaviour:
     loadSceneMode: 1
   - sceneName: Club
     loadSceneMode: 1
+  - sceneName: AlertSystem
+    loadSceneMode: 1
   mainMenueScenes:
   - sceneName: MainMenu
     loadSceneMode: 0
