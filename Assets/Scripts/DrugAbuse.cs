@@ -5,9 +5,6 @@ using UnityEngine;
 public class DrugAbuse : MonoBehaviour
 {
 
-    private static DrugAbuse _instance;
-    public static DrugAbuse Instance { get { return _instance; } }
-
     bool drugPicked = false;
     float timer = 0f;
     float timerWater = 0f;
@@ -84,10 +81,10 @@ public class DrugAbuse : MonoBehaviour
     void Update()
     {
         //Drug Timer
-        if(startTimer)
+        if(startTimer && timer<3)
             timer += Time.deltaTime;
 
-        if(timer > 1.5)
+        if(timer > 3)
         {
             drugPicked = false;
             timer = 0;
