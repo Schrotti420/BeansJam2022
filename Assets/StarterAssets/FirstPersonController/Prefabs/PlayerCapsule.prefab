@@ -147,6 +147,9 @@ GameObject:
   - component: {fileID: 1935798279373205153}
   - component: {fileID: 1020038912894071774}
   - component: {fileID: 8865233110148877041}
+  - component: {fileID: 682521239299664750}
+  - component: {fileID: 4351889894970876256}
+  - component: {fileID: 1693019171318581104}
   m_Layer: 8
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -372,7 +375,7 @@ MonoBehaviour:
   sampleCount: 10
   sampleStep: 100
   noiseScaling: 3
-  fatigueMovementInfluenceScaling: 0.1
+  fatigueMovementInfluenceScaling: 2
 --- !u!114 &1935798279373205153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,7 +391,7 @@ MonoBehaviour:
   virtualCam: {fileID: 0}
   transitionTime: 1
   fpCharacter: {fileID: 0}
-  ravingFatigueRate: 2
+  ravingFatigueRate: 1
 --- !u!114 &1020038912894071774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,6 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2b9e4734cb1db43b35d01c3c15439f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeAtt: 15
 --- !u!114 &8865233110148877041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,6 +415,57 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13821754b6216fe48a63753200e611b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &682521239299664750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8616685848737228372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687e660d6cc70ad429b7af1ed19e1d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interval: 10
+  spawnObject: {fileID: 9005929168572925143, guid: 6de55d6f1de4bcd489a86b8f0998ea6e,
+    type: 3}
+  minPosition_firstFloor: {x: -21, y: 0.3, z: -27}
+  maxPosition_firstFloor: {x: 26, y: 0.3, z: 10}
+  minPosition_secFloor: {x: 2.5, y: 6.5, z: -15}
+  maxPosition_secFloor: {x: 19, y: 6.5, z: 12}
+  spawnCountInOneFrame_FirstFloor: 3
+  maxAmountDrugs_secFloor: 10
+--- !u!114 &4351889894970876256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8616685848737228372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 064ca70f2746148409b93cd0fa10548e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScreen: {fileID: 0}
+  transitionDuration: 0.5
+  belowPosition: {fileID: 0}
+  abovePosition: {fileID: 0}
+  centerPosition: {fileID: 0}
+  pauseMenuRoot: {fileID: 0}
+--- !u!114 &1693019171318581104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8616685848737228372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac6ea23822c251e40b0ebbaf12552d8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &395487607
