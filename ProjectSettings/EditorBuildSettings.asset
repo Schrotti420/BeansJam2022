@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/UI/MainMenu.unity
     guid: 9bbc85aa7562c864eb0393db500b5b4d
   - enabled: 0
     path: Assets/Scenes/Characters.unity
@@ -17,6 +17,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 09aaae1b07eb1574093796f612933e1c
+  - enabled: 1
+    path: Assets/Scenes/UI/AttentionDie.unity
+    guid: 73ed2d49fc80f6c4cbedcdc0f133d32f
+  - enabled: 1
+    path: Assets/Scenes/UI/FatigueDie.unity
+    guid: cc05ac1dcc9ddcb4f8f3ac291b04123e
+  - enabled: 1
+    path: Assets/Scenes/UI/OverdoseDie.unity
+    guid: 6437106bce0f5114e9b0cf038827bbcb
+  - enabled: 1
+    path: Assets/Scenes/UI/YouWin.unity
+    guid: 9ea33a5e8f8c04f4d8d3d05843e232d4
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7,
       type: 2}
