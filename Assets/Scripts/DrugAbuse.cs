@@ -81,10 +81,10 @@ public class DrugAbuse : MonoBehaviour
     void Update()
     {
         //Drug Timer
-        if(startTimer && timer<3)
+        if(startTimer && timer<2)
             timer += Time.deltaTime;
 
-        if(timer > 3)
+        if(timer > 2)
         {
             drugPicked = false;
             timer = 0;
