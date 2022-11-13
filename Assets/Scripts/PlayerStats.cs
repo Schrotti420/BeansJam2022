@@ -13,16 +13,22 @@ public class PlayerStats : MonoBehaviour
     private int fatigue = 50;
     public int Fatigue { get { return fatigue; } }
 
+    //Attention variables
     private float attention = 0;
-    public float Attention { get { return attention; } }
     float timerAtt = 0;
     bool startTimer = false;
     float timeAtt = 0;
+    public float Attention { get { return attention; } }
+
 
     // Time in seconds for Fatigue to decrease by one
     [SerializeField]
     private float fatigueRate = 2.0f;
     private float oneSecondTimer = 0.0f;
+
+    //Variables for Caught by Guard
+    bool caughtByGuard = false;
+    public bool CaughtByGuardStatus { get { return caughtByGuard; } }
 
 
     public bool gameOver = false;
@@ -50,7 +56,8 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gameOver)
+        Debug.Log("Attention  " + attention.ToString());
+        if (gameOver)
             return;
 
         oneSecondTimer += Time.deltaTime;
@@ -74,7 +81,7 @@ public class PlayerStats : MonoBehaviour
             if (timerAtt < timeAtt)
             {
                 attention = timerAtt/timeAtt;
-                Debug.Log(attention.ToString());
+                
             }
         }
     }
@@ -100,6 +107,12 @@ public class PlayerStats : MonoBehaviour
         attention = value;
         startTimer = true;
         timeAtt = time;
+
+    }
+
+    public void CaughtByGuard(bool value)
+    {
+        caughtByGuard = value;
 
     }
 

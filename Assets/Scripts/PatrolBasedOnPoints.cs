@@ -53,6 +53,12 @@ public class PatrolBasedOnPoints : MonoBehaviour
 
     public float Attention { get { return alarmLevel; } }
     public float Timer { get { return startTime; } }
+
+    public float CriticalTimer()
+    {
+        return targetTime;
+    }
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -154,12 +160,13 @@ public class PatrolBasedOnPoints : MonoBehaviour
         bool isBeerPicked = player.GetComponent<DrugAbuse>().isBeerPicked();
         //Debug.Log("timer " + startTime.ToString());
 
-        //Debug.Log(angleToPlayer.ToString() +  "   " + distanceFromPlayer.ToString() + "  " + isDrugPicked.ToString());
+        Debug.Log(angleToPlayer.ToString() +  "   " + distanceFromPlayer.ToString() + "  " + isDrugPicked.ToString());
 
         if (angleToPlayer <= criticalAngle &&
            distanceFromPlayer <= criticalDistance &&
            isDrugPicked)
         {
+            PlayerStats.Instance.CaughtByGuard(true);
             if (alarmLevel == 0)
             {
                 Debug.Log("Alert Level 1");
@@ -189,6 +196,7 @@ public class PatrolBasedOnPoints : MonoBehaviour
                     //Switch Sprite
                     alarmStatusImage.sprite = spriteInitialState;
                     Debug.Log("Timer out");
+                    PlayerStats.Instance.CaughtByGuard(false);
                 }
             }
             else if (alarmLevel == 1)
@@ -249,7 +257,8 @@ public class PatrolBasedOnPoints : MonoBehaviour
                 //Switch Sprite
                 alarmStatusImage.sprite = spriteInitialState;
                 Debug.Log("Timer out");
-                
+                PlayerStats.Instance.CaughtByGuard(false);
+
             }
         }
     }
