@@ -25,7 +25,7 @@ public class MasterSceneManager : MonoBehaviour
     }
     public void LoadMainMenue()
     {
-        foreach (SceneLoadingStruct sceneLoadingStruct in gameLoopScenes)
+        foreach (SceneLoadingStruct sceneLoadingStruct in mainMenueScenes)
         {
             SceneManager.LoadScene(sceneLoadingStruct.sceneName, sceneLoadingStruct.loadSceneMode);
         }
