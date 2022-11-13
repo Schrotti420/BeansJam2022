@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main.unity
     guid: 09aaae1b07eb1574093796f612933e1c
   - enabled: 1
+    path: Assets/Scenes/AlertSystem.unity
+    guid: 7eebe6b326064eb47b61a1e7bf180d02
+  - enabled: 1
     path: Assets/Scenes/UI/AttentionDie.unity
     guid: 73ed2d49fc80f6c4cbedcdc0f133d32f
   - enabled: 1
