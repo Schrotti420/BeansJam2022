@@ -1,6 +1,6 @@
 # BeansJam2022 - StayARave
 
-Welcome to our Git repository of the BeansJam2022 game StayARave.
+Welcome to our Git repository of the [BeansJam2022](https://itch.io/jam/beansjam-22) Game StayARave.
 
 ## Game
 You play a Raver in a techno Club. The goal is to stay awake until the club closes.
@@ -33,7 +33,8 @@ Control influences:
 - player control influences
 
 ## used Assets
-- Starter Assets - First Person Character Controller: https://assetstore.unity.com/packages/essentials/starter-assets-first-person-character-controller-196525
+- [Starter Assets - First Person Character Controller](https://assetstore.unity.com/packages/essentials/starter-assets-first-person-character-controller-196525)
+
 
 ## used Tools
 - Unity
@@ -45,6 +46,7 @@ Control influences:
 - Hubert
 - Despoina
 - Louis
+- Annemieke
 - [Livless](https://open.spotify.com/artist/5Y2eKcKk2XuszeFMWw7Jzk?si=4H7TbZeiS5-vrjufuvLlsQ)
 
 ![Team portrait](https://media.tenor.com/UHvv3z9mZloAAAAd/millennium-bsb.gif)
