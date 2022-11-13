@@ -459,6 +459,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2088147679, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: fatigueMovementInfluenceScaling
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1935798279373205153, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
       propertyPath: virtualCam

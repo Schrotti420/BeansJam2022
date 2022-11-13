@@ -5,7 +5,6 @@ using StarterAssets;
 
 public class ControlsFatigueInfluence : MonoBehaviour
 {
-    public int fatigueValue = 50;
     public FirstPersonController firstpersoncontroller;
 
     [Header("Noise parameters")]
@@ -18,7 +17,8 @@ public class ControlsFatigueInfluence : MonoBehaviour
     //[SerializeField]
     private List<float> noise = new List<float>();
     private int noiseArrayIndex = 0;
-
+    private float m_overdose;
+    private float m_fatigue;
     [Header("Fatigue parameters")]
     [SerializeField]
     private float fatigueMovementInfluenceScaling = .1f;
@@ -39,7 +39,20 @@ public class ControlsFatigueInfluence : MonoBehaviour
     //movement speed gets adjusted when fatigue value changes
     public float GetFatigueValue() 
     {
-        return PlayerStats.Instance.Fatigue * fatigueMovementInfluenceScaling;       
+        CalculateOverdoseFatigue();
+        float random = Random.value - 1;
+        return m_fatigue * fatigueMovementInfluenceScaling * random;       
+    }
+    void CalculateOverdoseFatigue()
+    {
+        //m_overdose = PlayerStats.Instance.Fatigue > 50 ? Mathf.Clamp(((PlayerStats.Instance.Fatigue - 50) / 50f), 0f, 1f) : 0f;
+        m_overdose = PlayerStats.Instance.Fatigue > 50 ? map(PlayerStats.Instance.Fatigue, 50, 0, 0, 1) : 0;
+        //m_fatigue = PlayerStats.Instance.Fatigue < 50 ? Mathf.Clamp(((PlayerStats.Instance.Fatigue) / 50f), 0f, 1f) : 0f;
+        m_fatigue = PlayerStats.Instance.Fatigue < 50 ? map(PlayerStats.Instance.Fatigue, 50, 100, 0, 1) : 0;
+    }
+    float map(float value, float low1, float high1, float low2, float high2)
+    {
+        return low2 + (value - low1) * (high2 - low2) / (high1 - low1) * -1;
     }
 
     float xCoord = 0.0f;
@@ -56,7 +69,7 @@ public class ControlsFatigueInfluence : MonoBehaviour
 
     public float GetFatigueNoiseInfluence() 
     {
-        return noise[noiseArrayIndex];
+        return noise[noiseArrayIndex] * GetFatigueValue();
     }
     
     
