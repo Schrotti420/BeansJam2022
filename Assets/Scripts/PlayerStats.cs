@@ -132,4 +132,13 @@ public class PlayerStats : MonoBehaviour
         gameOver = true;
         thirdPersonSwitch.Overdose();
     }
+
+    public void Caught()
+    {
+        if (gameOver)
+            return;
+
+        gameOver = true;
+        TimeManager.Instance.ShowCaughtScreen();
+    }
 }

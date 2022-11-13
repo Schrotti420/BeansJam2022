@@ -206,6 +206,8 @@ public class PatrolBasedOnPoints : MonoBehaviour
                 Fill.color = Color.red;
 
                 Debug.Log("Alert Level 2");
+
+                PlayerStats.Instance.Caught();
             }
         }
     }

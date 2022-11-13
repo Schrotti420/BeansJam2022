@@ -20,12 +20,20 @@ public class BarInteractionHandler : MonoBehaviour
     private int beerInfluenceOnOverdose, waterInfluenceOnFatigue;
     public void DrinkBeer()
     {
-        PlayerStats.Instance.IncreaseOverdose(beerInfluenceOnOverdose);
+        if(PlayerStats.Instance.Fatigue > 60)
+            PlayerStats.Instance.IncreaseOverdose(beerInfluenceOnOverdose);
+        else
+            PlayerStats.Instance.IncreaseFatigue(beerInfluenceOnOverdose);
+
         PlayerStats.Instance.attentionStatus(0f, false, 15f);
     }
     public void DrinkWater()
     {
-        PlayerStats.Instance.IncreaseFatigue(waterInfluenceOnFatigue);
+        if(PlayerStats.Instance.Fatigue > 50)
+            PlayerStats.Instance.IncreaseFatigue(waterInfluenceOnFatigue);
+        else
+            PlayerStats.Instance.IncreaseOverdose(waterInfluenceOnFatigue);
+
         PlayerStats.Instance.attentionStatus(2f, true, 15f);
     }
     public void Show()
