@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BarInteractionHandler : MonoBehaviour
 {
     public static BarInteractionHandler Instance;
     [SerializeField]
     GameObject beerUIRoot;
+    public List<Button> barUiButtons;
 
     public void Start()
     {
@@ -42,5 +44,13 @@ public class BarInteractionHandler : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(delay);
         beerUIRoot.SetActive(false);
+    }
+    private void ResetButtons()
+    {
+        foreach(Button button in barUiButtons)
+        {
+            button.enabled = false;
+            button.enabled = true;
+        }
     }
 }
