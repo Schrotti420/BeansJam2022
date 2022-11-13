@@ -1,44 +1,35 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SimpleSpotLightAnimator : MonoBehaviour
 {
-    [SerializeField]
-    float degreesPerSecond;
-
-    [SerializeField]
-    Vector2 minMaxYRotation;
+    public float yDuration, zDuration;
     [SerializeField]
     Transform yRotationRoot;
     [SerializeField]
-    Vector2 minMaxZRotation;
-    [SerializeField]
     Transform zRotationRoot;
 
-    private bool yAxisPositive = true, zAxisPositive = true;
+    private Vector3 initialY, initialZ;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        PingPong();
-
-        //Debug.Log($"Y Direction: {yAxisPositive}");
-        //Debug.Log($"Z Direction: {zAxisPositive}");
+        StartSpotlightAnimation();
     }
-    private float AddRotation(bool isPositiveDirection, float rotation)
+    private void StartSpotlightAnimation()
     {
-        if (isPositiveDirection) return rotation + (degreesPerSecond * Time.deltaTime);
-        else return rotation - (degreesPerSecond * Time.deltaTime);
-    }
-    public void PingPong()
-    {
-        if(yRotationRoot.localEulerAngles.y < minMaxYRotation.x) yAxisPositive = true;
-        if(yRotationRoot.localEulerAngles.y > minMaxYRotation.y) yAxisPositive = false;
-        yRotationRoot.localRotation = Quaternion.Euler(new Vector3(0f, AddRotation(yAxisPositive, yRotationRoot.localEulerAngles.y), 0f));
+        Sequence zse = DOTween.Sequence();
+        Sequence yse = DOTween.Sequence();
+        zse.Append(zRotationRoot.DOLocalRotate(new Vector3(0f,90f,-180f), zDuration + Random.value, RotateMode.LocalAxisAdd));
+        zse.Append(zRotationRoot.DOLocalRotate(new Vector3(0f, 90f, 180f), zDuration + Random.value, RotateMode.LocalAxisAdd));
+        yse.Append(yRotationRoot.DOLocalRotate(new Vector3(0f, 70, 0f), yDuration + Random.value, RotateMode.LocalAxisAdd));
+        yse.Append(yRotationRoot.DOLocalRotate(new Vector3(0f, 0f, 0f), yDuration + Random.value, RotateMode.LocalAxisAdd));
 
-        if (zRotationRoot.localEulerAngles.z < minMaxYRotation.x) zAxisPositive = true;
-        if (zRotationRoot.localEulerAngles.z > minMaxYRotation.y) zAxisPositive = false;
-        zRotationRoot.localRotation = Quaternion.Euler(new Vector3(0f, 90f, AddRotation(zAxisPositive, zRotationRoot.localEulerAngles.z)));
+        zse.SetLoops(-1, LoopType.Yoyo);
+        yse.SetLoops(-1, LoopType.Yoyo);
+
+        zse.Play();
+        yse.Play();
     }
 }
