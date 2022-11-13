@@ -42,6 +42,9 @@ public class PatrolBasedOnPoints : MonoBehaviour
 
     Image Fill;
 
+    public float criticalAngle = 50;
+    public float criticalDistance = 10;
+
 
     void Start()
     {
@@ -85,7 +88,7 @@ public class PatrolBasedOnPoints : MonoBehaviour
         // cycling to the start if necessary.
         //destPoint = (destPoint + 1) % points.Length;
         destPoint = Random.Range(0,points.Length);
-        Debug.Log(destPoint.ToString());
+        //Debug.Log(destPoint.ToString());
 
         CheckCulprit();
     }
@@ -142,8 +145,10 @@ public class PatrolBasedOnPoints : MonoBehaviour
         bool isDrugPicked = player.GetComponent<DrugAbuse>().isDrugPicked();
         //Debug.Log("timer " + startTime.ToString());
 
-        if (angleToPlayer <= 50 &&
-           distanceFromPlayer <= 10 &&
+        Debug.Log(angleToPlayer.ToString() +  "   " + distanceFromPlayer.ToString() + "  " + isDrugPicked.ToString());
+
+        if (angleToPlayer <= criticalAngle &&
+           distanceFromPlayer <= criticalDistance &&
            isDrugPicked)
         {
             if (alarmLevel == 0)
@@ -191,12 +196,13 @@ public class PatrolBasedOnPoints : MonoBehaviour
             if(startTimer)
                 startTime += Time.deltaTime;
 
+            this.agent.speed = 2f;
             ChaseCulprit();
 
 
             //Debug.Log(startTime.ToString());
 
-            Debug.Log("timer " + startTime.ToString() + " " + targetTime.ToString() + " " + targetProgress.ToString());
+            //Debug.Log("timer " + startTime.ToString() + " " + targetTime.ToString() + " " + targetProgress.ToString());
             if (startTime <= targetTime && startTime > 1.5)
             {
                 CheckCulprit();
@@ -206,7 +212,7 @@ public class PatrolBasedOnPoints : MonoBehaviour
             }
             else if(startTime > targetTime)
             {
-
+                this.agent.speed = 1.5f;
                 startTime = 0;
                 startTimer = false;
                 alarmLevel = 0;

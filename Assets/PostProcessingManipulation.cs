@@ -125,7 +125,7 @@ public class PostProcessingManipulation : MonoBehaviour
 
             AdjustChromaticAberration(m_overdose);
 
-            Debug.Log($"Tint: {m_tintValue}; Hue: {m_hueValue}; Lens: {m_lensDistValue}");
+           // Debug.Log($"Tint: {m_tintValue}; Hue: {m_hueValue}; Lens: {m_lensDistValue}");
 
             m_frameCounter = skippedFrames;
         }
@@ -138,7 +138,7 @@ public class PostProcessingManipulation : MonoBehaviour
         //m_fatigue = PlayerStats.Instance.Fatigue < 50 ? Mathf.Clamp(((PlayerStats.Instance.Fatigue) / 50f), 0f, 1f) : 0f;
         m_fatigue = PlayerStats.Instance.Fatigue < 50 ? map(PlayerStats.Instance.Fatigue, 50, 100, 0, 1) : 0;
 
-        Debug.Log($"Overdose : Fatigue - {m_overdose} : {m_fatigue}");
+       // Debug.Log($"Overdose : Fatigue - {m_overdose} : {m_fatigue}");
     }
     float map(float value, float low1, float high1, float low2, float high2)
     {

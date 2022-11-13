@@ -52,7 +52,7 @@ public class PlayerStats : MonoBehaviour
             fatigue -= 1;
             oneSecondTimer -= fatigueRate;
 
-            Debug.Log(fatigue);
+            //Debug.Log(fatigue);
 
             if (fatigue <= 0)
                 Asleep();
