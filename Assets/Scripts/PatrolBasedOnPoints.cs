@@ -8,10 +8,6 @@ using UnityEngine.UI;
 public class PatrolBasedOnPoints : MonoBehaviour
 {
 
-    private static PatrolBasedOnPoints _instance;
-    public static PatrolBasedOnPoints Instance { get { return _instance; } }
-
-
     //Patrol variables
     public Transform[] points;
     private int destPoint = 0;
@@ -147,20 +143,21 @@ public class PatrolBasedOnPoints : MonoBehaviour
 
     void CheckCulprit()
     {
-        Vector3 direction = player.position - this.transform.position;
+        Vector3 direction = this.transform.position - player.position;
 
         float distanceFromPlayer = Vector3.Distance(player.position, this.transform.position);
-        float angleToPlayer = Vector3.Angle(direction, this.transform.forward);
+        float angleToPlayer = Vector3.Angle(-this.transform.forward, direction);
 
         //Debug.Log(distanceFromPlayer.ToString());
         //Debug.Log(angleToPlayer.ToString());
 
+        //Debug.DrawRay(transform.position,direction,Color.red,1000);
         bool isDrugPicked = player.GetComponent<DrugAbuse>().isDrugPicked();
         bool isWaterPicked = player.GetComponent<DrugAbuse>().isWaterPicked();
         bool isBeerPicked = player.GetComponent<DrugAbuse>().isBeerPicked();
         //Debug.Log("timer " + startTime.ToString());
 
-        Debug.Log(angleToPlayer.ToString() +  "   " + distanceFromPlayer.ToString() + "  " + isDrugPicked.ToString());
+       // Debug.Log(angleToPlayer.ToString() +  "   " + distanceFromPlayer.ToString() + "  " + isDrugPicked.ToString());
 
         if (angleToPlayer <= criticalAngle &&
            distanceFromPlayer <= criticalDistance &&
