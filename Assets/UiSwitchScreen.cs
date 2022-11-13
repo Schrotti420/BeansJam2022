@@ -17,6 +17,7 @@ public class UiSwitchScreen : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     public void SwitchScreen(RectTransform newScreen)
     {
