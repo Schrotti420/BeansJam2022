@@ -522,6 +522,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: BackButton
       objectReference: {fileID: 0}
+    - target: {fileID: 6808574703490610047, guid: ec94f52408a8fde4eb5dc309e82442ab,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1a1e7446c2db7a3459eb5c24db79d215,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec94f52408a8fde4eb5dc309e82442ab, type: 3}
 --- !u!224 &333662068 stripped
@@ -1584,6 +1590,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: BackButton
       objectReference: {fileID: 0}
+    - target: {fileID: 6808574703490610047, guid: ec94f52408a8fde4eb5dc309e82442ab,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1a1e7446c2db7a3459eb5c24db79d215,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec94f52408a8fde4eb5dc309e82442ab, type: 3}
 --- !u!224 &814849084 stripped
@@ -2629,6 +2641,7 @@ MonoBehaviour:
   minPosition_secFloor: {x: 2.5, y: 6.5, z: -15}
   maxPosition_secFloor: {x: 19, y: 6.5, z: 12}
   spawnCountInOneFrame_FirstFloor: 3
+  maxAmountDrugs_secFloor: 15
 --- !u!114 &2088147708
 MonoBehaviour:
   m_ObjectHideFlags: 0
