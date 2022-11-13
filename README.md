@@ -18,6 +18,12 @@ What to do:
 - rave
 - consume different substances
 
+Controls:
+- W-A-S-D -> Move
+- Space   -> Jump
+- R       -> Rave
+
+
 Control influences:
 - the player controls will be influenced by your overdose and fatigue level
 
