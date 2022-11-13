@@ -21,10 +21,10 @@ public class SimpleSpotLightAnimator : MonoBehaviour
     {
         Sequence zse = DOTween.Sequence();
         Sequence yse = DOTween.Sequence();
-        zse.Append(zRotationRoot.DOLocalRotate(new Vector3(0f,90f,-180f), zDuration + Random.value, RotateMode.LocalAxisAdd));
-        zse.Append(zRotationRoot.DOLocalRotate(new Vector3(0f, 90f, 180f), zDuration + Random.value, RotateMode.LocalAxisAdd));
+        zse.Append(zRotationRoot.DOLocalRotate(new Vector3(0f,90f, 0f), zDuration + Random.value, RotateMode.Fast));
+        zse.Append(zRotationRoot.DOLocalRotate(new Vector3(0f, 90f, 360f), zDuration + Random.value, RotateMode.Fast));
         yse.Append(yRotationRoot.DOLocalRotate(new Vector3(0f, 70, 0f), yDuration + Random.value, RotateMode.LocalAxisAdd));
-        yse.Append(yRotationRoot.DOLocalRotate(new Vector3(0f, 0f, 0f), yDuration + Random.value, RotateMode.LocalAxisAdd));
+        yse.Append(yRotationRoot.DOLocalRotate(new Vector3(0f, 0f, 0f), yDuration + Random.value, RotateMode.Fast));
 
         zse.SetLoops(-1, LoopType.Yoyo);
         yse.SetLoops(-1, LoopType.Yoyo);
