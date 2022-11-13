@@ -80,11 +80,17 @@ public class PlayerStats : MonoBehaviour
 
     private void Asleep()
     {
+        if(gameOver)
+            return;
+
         gameOver = true;
         thirdPersonSwitch.FallAsleep();
     }
     private void Overdose()
     {
+        if(gameOver)
+            return;
+
         gameOver = true;
         thirdPersonSwitch.Overdose();
     }
