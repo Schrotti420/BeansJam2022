@@ -30,10 +30,15 @@ public class BarInteractionHandler : MonoBehaviour
         Cursor.visible = true;
         beerUIRoot.SetActive(true);
     }
-    public void Hide()
+    public void Hide(float delay)
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        StartCoroutine(HideDelayCoroutine(delay));
+    }
+    IEnumerator HideDelayCoroutine(float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
         beerUIRoot.SetActive(false);
     }
 }

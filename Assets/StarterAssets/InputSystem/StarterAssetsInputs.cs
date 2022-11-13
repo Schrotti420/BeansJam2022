@@ -48,7 +48,7 @@ namespace StarterAssets
             }
 
 
-            Debug.Log($"Noise Influence: {influence}");
+            //Debug.Log($"Noise Influence: {influence}");
             //float slowness = fatigueControls.GetFatigueValue();
             //Debug.Log($"Slowness Influence: {slowness}");
             Vector2 movement = value.Get<Vector2>();
