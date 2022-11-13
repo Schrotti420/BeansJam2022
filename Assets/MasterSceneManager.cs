@@ -13,7 +13,6 @@ public class MasterSceneManager : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
         Instance = this;
     }
     public void LoadGame()

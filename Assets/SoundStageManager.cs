@@ -21,8 +21,9 @@ public class SoundStageManager : MonoBehaviour
 
     private void Start()
     {
-        primary.clip = tracks[0];
-        currentTrack = 0;
+        int track = Random.Range(0, tracks.Count);
+        primary.clip = tracks[track];
+        currentTrack = track;
         primary.Play();
 
         StartCoroutine(FadeManagerDaemon());
