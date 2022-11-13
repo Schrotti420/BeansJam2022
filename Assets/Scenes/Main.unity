@@ -543,14 +543,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2088147679, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2088147679, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-      propertyPath: fatigueMovementInfluenceScaling
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 627738341190175862, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
       propertyPath: skippedFrames
@@ -571,11 +563,31 @@ PrefabInstance:
       propertyPath: fpCharacter
       value: 
       objectReference: {fileID: 6212469128704593551}
-    - target: {fileID: 1935798279373205153, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
+    - target: {fileID: 4351889894970876256, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
-      propertyPath: ravingFatigueRate
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: abovePosition
+      value: 
+      objectReference: {fileID: 1958337885}
+    - target: {fileID: 4351889894970876256, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
+        type: 3}
+      propertyPath: belowPosition
+      value: 
+      objectReference: {fileID: 1136287263}
+    - target: {fileID: 4351889894970876256, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
+        type: 3}
+      propertyPath: currentScreen
+      value: 
+      objectReference: {fileID: 1497166979}
+    - target: {fileID: 4351889894970876256, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
+        type: 3}
+      propertyPath: pauseMenuRoot
+      value: 
+      objectReference: {fileID: 1282259124}
+    - target: {fileID: 4351889894970876256, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
+        type: 3}
+      propertyPath: centerPosition
+      value: 
+      objectReference: {fileID: 694673942}
     - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
       propertyPath: m_Name
@@ -2614,44 +2626,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a07e5afeb981c6e4a9f0b2dd03dc06cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2088147698
+--- !u!114 &2088147708 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1807713742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac6ea23822c251e40b0ebbaf12552d8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2088147699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1807713742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 687e660d6cc70ad429b7af1ed19e1d6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interval: 5
-  spawnObject: {fileID: 9005929168572925143, guid: 6de55d6f1de4bcd489a86b8f0998ea6e,
+  m_CorrespondingSourceObject: {fileID: 4351889894970876256, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
     type: 3}
-  minPosition_firstFloor: {x: -21, y: 0.3, z: -27}
-  maxPosition_firstFloor: {x: 26, y: 0.3, z: 10}
-  minPosition_secFloor: {x: 2.5, y: 6.5, z: -15}
-  maxPosition_secFloor: {x: 19, y: 6.5, z: 12}
-  spawnCountInOneFrame_FirstFloor: 3
-  maxAmountDrugs_secFloor: 15
---- !u!114 &2088147708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_PrefabInstance: {fileID: 407259644}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1807713742}
   m_Enabled: 1
@@ -2659,12 +2638,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 064ca70f2746148409b93cd0fa10548e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentScreen: {fileID: 1497166979}
-  transitionDuration: 0.5
-  belowPosition: {fileID: 1136287263}
-  abovePosition: {fileID: 1958337885}
-  centerPosition: {fileID: 694673942}
-  pauseMenuRoot: {fileID: 1282259124}
 --- !u!1001 &6212469128704593550
 PrefabInstance:
   m_ObjectHideFlags: 0
