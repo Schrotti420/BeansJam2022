@@ -250,8 +250,8 @@
                 },
                 {
                     "name": "",
-                    "id": "f4252743-d163-4234-94a6-b8b05e9883bb",
-                    "path": "<Keyboard>/space",
+                    "id": "5daa1ad1-c085-44df-b465-7fa6786c0c3b",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
