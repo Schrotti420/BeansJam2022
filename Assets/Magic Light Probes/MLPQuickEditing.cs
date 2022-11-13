@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 
 #if UNITY_2020_1_OR_NEWER
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 #else
 using UnityEditor.Experimental.SceneManagement;
 #endif
@@ -24,8 +24,8 @@ namespace MagicLightProbes
 
 #if UNITY_EDITOR
 #if UNITY_2020_1_OR_NEWER
-        private PrefabStage prefabStage;
-        private PrefabStage.Mode prefabStageMode;
+        private UnityEditor.SceneManagement.PrefabStage prefabStage;
+        private UnityEditor.SceneManagement.PrefabStage.Mode prefabStageMode;
 #endif
         private void OnDrawGizmosSelected()
         {
@@ -52,14 +52,14 @@ namespace MagicLightProbes
                         parent.prefabConnectionObject.transform.rotation, Vector3.one);
                     
 #if UNITY_2020_1_OR_NEWER
-                    prefabStage = PrefabStageUtility.GetCurrentPrefabStage();
+                    prefabStage = UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage();
 
                     if (prefabStage != null)
                     {
-                        prefabStageMode = PrefabStageUtility.GetCurrentPrefabStage().mode;
+                        prefabStageMode = UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage().mode;
                         
                         position = parent.calculatedFromPrefab ? parent.prefabConnectionObject.transform.position : Vector3.zero;
-                        Gizmos.matrix = prefabStageMode == PrefabStage.Mode.InContext ? parentTRS : noTRS;
+                        Gizmos.matrix = prefabStageMode == UnityEditor.SceneManagement.PrefabStage.Mode.InContext ? parentTRS : noTRS;
                     }
                     else
                     {
