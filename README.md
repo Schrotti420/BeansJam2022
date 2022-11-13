@@ -34,6 +34,7 @@ Control influences:
 
 ## used Assets
 - [Starter Assets - First Person Character Controller](https://assetstore.unity.com/packages/essentials/starter-assets-first-person-character-controller-196525)
+- [Character an Animations in Mixamo](https://www.mixamo.com/)
 
 
 ## used Tools
@@ -41,6 +42,7 @@ Control influences:
 - Github (obviously)
 - [Excalidraw](https://excalidraw.com/)
 - Blender
+- Gimp
 
 ## Team
 - [Florian](https://github.com/Schrotti420)
