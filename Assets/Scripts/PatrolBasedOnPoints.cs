@@ -7,6 +7,11 @@ using UnityEngine.UI;
 
 public class PatrolBasedOnPoints : MonoBehaviour
 {
+
+    private static PatrolBasedOnPoints _instance;
+    public static PatrolBasedOnPoints Instance { get { return _instance; } }
+
+
     //Patrol variables
     public Transform[] points;
     private int destPoint = 0;
@@ -24,7 +29,8 @@ public class PatrolBasedOnPoints : MonoBehaviour
     public Sprite spriteAlarmState1;
     public Sprite spriteAlarmState2;
 
-    int alarmLevel = 0;
+    //int alarmLevel = 0;
+    float alarmLevel = 0f;
 
     float MinDist = 5;
     float MoveSpeed = 3;
@@ -45,7 +51,8 @@ public class PatrolBasedOnPoints : MonoBehaviour
     public float criticalAngle = 50;
     public float criticalDistance = 10;
 
-
+    public float Attention { get { return alarmLevel; } }
+    public float Timer { get { return startTime; } }
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -95,7 +102,7 @@ public class PatrolBasedOnPoints : MonoBehaviour
 
     void ChaseCulprit()
     {
-
+        Debug.Log("Chase Culprit");
         transform.LookAt(player);
 
         if (Vector3.Distance(this.transform.position, player.position) >= MinDist)
@@ -143,9 +150,11 @@ public class PatrolBasedOnPoints : MonoBehaviour
         //Debug.Log(angleToPlayer.ToString());
 
         bool isDrugPicked = player.GetComponent<DrugAbuse>().isDrugPicked();
+        bool isWaterPicked = player.GetComponent<DrugAbuse>().isWaterPicked();
+        bool isBeerPicked = player.GetComponent<DrugAbuse>().isBeerPicked();
         //Debug.Log("timer " + startTime.ToString());
 
-        Debug.Log(angleToPlayer.ToString() +  "   " + distanceFromPlayer.ToString() + "  " + isDrugPicked.ToString());
+        //Debug.Log(angleToPlayer.ToString() +  "   " + distanceFromPlayer.ToString() + "  " + isDrugPicked.ToString());
 
         if (angleToPlayer <= criticalAngle &&
            distanceFromPlayer <= criticalDistance &&
@@ -162,6 +171,25 @@ public class PatrolBasedOnPoints : MonoBehaviour
 
                 startTimer = true;
                 canvasGroup.alpha = 1;
+
+                if (isWaterPicked)
+                {
+                    startTimer = true;
+                    startTime = 0;
+                    canvasGroup.alpha = 1;
+                }
+                if (isBeerPicked)
+                {
+                    this.agent.speed = 1.5f;
+                    startTime = 0;
+                    startTimer = false;
+                    alarmLevel = 0;
+                    slider.value = 0;
+
+                    //Switch Sprite
+                    alarmStatusImage.sprite = spriteInitialState;
+                    Debug.Log("Timer out");
+                }
             }
             else if (alarmLevel == 1)
             {

@@ -12,11 +12,18 @@ public class PlayerStats : MonoBehaviour
     // Fatigue/overdose min = 0 -> fatigue, max = 100 -> overdose
     private int fatigue = 50;
     public int Fatigue { get { return fatigue; } }
-    
+
+    private float attention = 0;
+    public float Attention { get { return attention; } }
+    float timerAtt = 0;
+    bool startTimer = false;
+    float timeAtt = 0;
+
     // Time in seconds for Fatigue to decrease by one
     [SerializeField]
     private float fatigueRate = 2.0f;
     private float oneSecondTimer = 0.0f;
+
 
     public bool gameOver = false;
     void Awake()
@@ -60,6 +67,16 @@ public class PlayerStats : MonoBehaviour
         
         // if(Input.anyKeyDown)
         //     PlayerStats.Instance.IncreaseFatigue(5);
+
+        if(startTimer)
+        {
+            timerAtt += Time.deltaTime;
+            if (timerAtt < timeAtt)
+            {
+                attention = timerAtt/timeAtt;
+                Debug.Log(attention.ToString());
+            }
+        }
     }
 
     public void IncreaseFatigue(int value)
@@ -76,6 +93,14 @@ public class PlayerStats : MonoBehaviour
 
         if(fatigue >= 100)
             Overdose();
+    }
+
+    public void attentionStatus(float value, bool startTimer, float time)
+    {
+        attention = value;
+        startTimer = true;
+        timeAtt = time;
+
     }
 
     private void Asleep()
