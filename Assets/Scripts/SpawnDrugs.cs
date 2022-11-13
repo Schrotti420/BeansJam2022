@@ -36,8 +36,12 @@ public class SpawnDrugs : MonoBehaviour
                 Random.Range(minPosition_secFloor.y, maxPosition_secFloor.y),
                 Random.Range(minPosition_secFloor.z, maxPosition_secFloor.z)
 );
-            Instantiate(spawnObject, randomPosition_firstFloor, Quaternion.identity);
-            Instantiate(spawnObject, randomPosition_secFloor, Quaternion.identity);
+
+            Quaternion initialQuaternion = transform.rotation;
+            Quaternion randomQuaternion = Quaternion.Euler(initialQuaternion.x, Random.Range(0f, 360f), initialQuaternion.z);
+
+            Instantiate(spawnObject, randomPosition_firstFloor, randomQuaternion);
+            Instantiate(spawnObject, randomPosition_secFloor, randomQuaternion);
             timer -= interval;
         }
     }
