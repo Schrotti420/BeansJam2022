@@ -2366,10 +2366,10 @@ MonoBehaviour:
   interval: 5
   spawnObject: {fileID: 9005929168572925143, guid: 6de55d6f1de4bcd489a86b8f0998ea6e,
     type: 3}
-  minPosition_firstFloor: {x: -21, y: 0, z: -27}
-  maxPosition_firstFloor: {x: 26, y: 0, z: 10}
-  minPosition_secFloor: {x: 2.5, y: 7, z: -15}
-  maxPosition_secFloor: {x: 19, y: 7, z: 12}
+  minPosition_firstFloor: {x: -21, y: 0.3, z: -27}
+  maxPosition_firstFloor: {x: 26, y: 0.3, z: 10}
+  minPosition_secFloor: {x: 2.5, y: 6.5, z: -15}
+  maxPosition_secFloor: {x: 19, y: 6.5, z: 12}
 --- !u!114 &2088147708
 MonoBehaviour:
   m_ObjectHideFlags: 0
