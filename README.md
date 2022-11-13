@@ -37,15 +37,16 @@ Control influences:
 
 
 ## used Tools
-- Unity
+- Unity (Version: 2021.3.13f1)
 - Github (obviously)
-- Excalidraw
+- [Excalidraw](https://excalidraw.com/)
+- Blender
 
 ## Team
-- Florian
-- Hubert
-- Despoina
-- Louis
+- [Florian](https://github.com/Schrotti420)
+- [Hubert](https://github.com/Hubizc)
+- [Despoina](https://github.com/Cpt-Spacewolf)
+- [Louis](https://github.com/LouisMichelon)
 - Annemieke
 - [Livless](https://open.spotify.com/artist/5Y2eKcKk2XuszeFMWw7Jzk?si=4H7TbZeiS5-vrjufuvLlsQ)
 
