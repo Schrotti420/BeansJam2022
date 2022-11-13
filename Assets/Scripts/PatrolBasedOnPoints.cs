@@ -157,7 +157,7 @@ public class PatrolBasedOnPoints : MonoBehaviour
         bool isBeerPicked = player.GetComponent<DrugAbuse>().isBeerPicked();
         //Debug.Log("timer " + startTime.ToString());
 
-       // Debug.Log(angleToPlayer.ToString() +  "   " + distanceFromPlayer.ToString() + "  " + isDrugPicked.ToString());
+        //Debug.Log(angleToPlayer.ToString() +  "   " + distanceFromPlayer.ToString() + "  " + isDrugPicked.ToString());
 
         if (angleToPlayer <= criticalAngle &&
            distanceFromPlayer <= criticalDistance &&
