@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1137855272, guid: 7d3012d19c664094bb531fd5be87b5c7, type: 3}
       propertyPath: criticalDistance
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1137855272, guid: 7d3012d19c664094bb531fd5be87b5c7, type: 3}
       propertyPath: spriteAlarmState2
