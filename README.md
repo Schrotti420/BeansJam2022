@@ -1,6 +1,6 @@
 # BeansJam2022 - StayARave
 
-Welcome to our Git repository of the BeansJam2022 game StayARave.
+Welcome to our Git repository of the [BeansJam2022](https://itch.io/jam/beansjam-22) Game StayARave.
 
 ## Game
 You play a Raver in a techno Club. The goal is to stay awake until the club closes.
