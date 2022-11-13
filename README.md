@@ -21,7 +21,6 @@ What to do:
 Controls:
 - Mouse   -> Camera
 - W-A-S-D -> Move
-- Space   -> Jump
 - R       -> Rave
 
 Control influences:
