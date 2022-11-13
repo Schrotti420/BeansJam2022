@@ -33,7 +33,8 @@ Control influences:
 - player control influences
 
 ## used Assets
-- Starter Assets - First Person Character Controller: https://assetstore.unity.com/packages/essentials/starter-assets-first-person-character-controller-196525
+- [Starter Assets - First Person Character Controller](https://assetstore.unity.com/packages/essentials/starter-assets-first-person-character-controller-196525)
+
 
 ## used Tools
 - Unity
