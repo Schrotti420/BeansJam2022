@@ -33,7 +33,7 @@ public class DrugAbuse : MonoBehaviour
         if (collision.gameObject.tag == "Drug")
         {
             Debug.Log("Drug Picked Up");
-            PlayerStats.Instance.IncreaseOverdose(10);
+            PlayerStats.Instance.IncreaseOverdose(20);
             Destroy(collision.gameObject);
             drugPicked = true;
             startTimer = true;
