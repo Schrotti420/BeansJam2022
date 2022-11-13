@@ -81,6 +81,8 @@ public class ThirdPersonSwitch : MonoBehaviour
         fpCharacter.transform.SetPositionAndRotation(transform.position, transform.rotation);
         fpCharacter.SetActive(true);
         fpAnimator.SetBool("Sleeping", true);
+
+        virtualCam.LookAt = fpCharacter.transform;
         
         DOTween.To(() => virtualCam.GetCinemachineComponent<Cinemachine.Cinemachine3rdPersonFollow>().CameraDistance,
             x => virtualCam.GetCinemachineComponent<Cinemachine.Cinemachine3rdPersonFollow>().CameraDistance = x,
@@ -98,6 +100,8 @@ public class ThirdPersonSwitch : MonoBehaviour
         fpCharacter.SetActive(true);
         fpAnimator.SetBool("Dying", true);
         
+        virtualCam.LookAt = fpCharacter.transform;
+
         DOTween.To(() => virtualCam.GetCinemachineComponent<Cinemachine.Cinemachine3rdPersonFollow>().CameraDistance,
             x => virtualCam.GetCinemachineComponent<Cinemachine.Cinemachine3rdPersonFollow>().CameraDistance = x,
             5.0f, 1.0f).OnComplete(() =>
