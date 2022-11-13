@@ -34,7 +34,7 @@ Control influences:
 
 ## used Assets
 - [Starter Assets - First Person Character Controller](https://assetstore.unity.com/packages/essentials/starter-assets-first-person-character-controller-196525)
-- [Character an Animations](https://www.mixamo.com/)
+- [Character an Animations in Mixamo](https://www.mixamo.com/)
 
 
 ## used Tools
