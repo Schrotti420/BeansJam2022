@@ -45,17 +45,19 @@ public class TimeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isLost || isWon)
+            return;
+        
         maxGameTimeInS -= Time.deltaTime;
 
-        if (maxGameTimeInS > 0 && !isWon && !isLost)
-        {
-            AnimateClock();
-        }
-        else if (!isWon)
+        if (maxGameTimeInS <= 0)
         {
             isWon = true;
             ShowWinScreen();
+            return;
         }
+            
+        AnimateClock();
     }
     private void AnimateClock()
     {
