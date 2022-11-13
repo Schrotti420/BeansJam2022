@@ -437,7 +437,7 @@ MonoBehaviour:
   minPosition_secFloor: {x: 2.5, y: 6.5, z: -15}
   maxPosition_secFloor: {x: 19, y: 6.5, z: 12}
   spawnCountInOneFrame_FirstFloor: 3
-  maxAmountDrugs_secFloor: 10
+  maxAmountDrugs_secFloor: 5
 --- !u!114 &4351889894970876256
 MonoBehaviour:
   m_ObjectHideFlags: 0
