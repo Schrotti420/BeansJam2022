@@ -11,6 +11,7 @@ TagManager:
   - Water
   - Beer
   - StageZone
+  - Bar
   layers:
   - Default
   - TransparentFX
